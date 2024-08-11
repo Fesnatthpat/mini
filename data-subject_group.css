@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+
+}
+
+.container {
+    max-width: 100vw;
+    margin: 0 auto;
+    background-image: url('bg-img/stacked-steps-haikei.svg');
+    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
+    background-size: cover;
+    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
+    background-position: center;
+    /* จัดภาพให้อยู่ตรงกลาง */
+    background-repeat: no-repeat;
+    /* ไม่ทำซ้ำภาพ */
+}
+
+.text-1 {
+    text-align: center;
+}
+
+.box-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    height: 100vh;
+}
+
+.box-2 {
+    /* border: 1px solid red; */
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px black;
+
+}
+
+.search-form {
+    display: flex;
+    padding: 20px;
+}
+
+.form-group label {
+    padding: 0 6px;
+}
+
+.form-group input {
+    padding: 5px 10px;
+    outline: none;
+}
+
+.form-group {
+    padding: 10px;
+}
+
+.form-group select {
+    padding: 5px 10px;
+}
+
+.form-group button {
+    padding: 5px 10px;
+    background: #62ff6a;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+}
+
+.form-group button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+
+
+.form-group {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.form-group i {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.btn-con {
+    /* border: 1px solid red; */
+    padding: 0 15px;
+    /* margin-right: 50px; */
+    /* width: 400px; */
+    
+}
+
+.add-student-button {
+    padding: 5px 10px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    background: #007bff;
+    color: #f4f4f4;
+    border: 1px solid transparent;
+}
+
+.add-student-button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.out-student-button {
+    padding: 5px 10px;
+    margin-left: 12px;
+    background: rgb(248, 59, 59);
+    color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.out-student-button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+
+
+.group-form1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+td img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.btn-out button {
+    /* width: 200px; */
+    padding: 5px 20px;
+    /* margin: auto; */
+    background: rgb(238, 57, 57);
+    border: none;
+    border-radius: 15px;
+    color: #fcfcfc;
+    font-size: 15px;
+    
+}

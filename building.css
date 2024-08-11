@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f4ea;
+    padding: 20px;
+}
+.container {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.form-group label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+.form-group input {
+    width: calc(100% - 150px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.btn-con {
+    /* border: 1px solid red; */
+    padding: 0 15px;
+    
+}
+
+.add-student-button {
+    padding: 5px 10px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    background: #007bff;
+    color: #f4f4f4;
+    border: 1px solid transparent;
+}
+
+.add-student-button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.out-student-button {
+    padding: 5px 10px;
+    margin-left: 12px;
+    background: rgb(248, 59, 59);
+    color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.out-student-button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
