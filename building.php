@@ -5,7 +5,7 @@ require_once 'config/db.php';
 try {
     $stmt = $pdo->prepare("SELECT * FROM building");
     $stmt->execute();
-    $buildings = $stmt->fetchAll(PDO::FETCH_ASSOC); // เปลี่ยนชื่อตัวแปรเป็น $buildings
+    $buildings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -83,8 +83,8 @@ if (!isset($_SESSION['admin_login'])) {
                                         <td><?php echo htmlspecialchars($building['building_name']); // ใช้ building_name 
                                             ?></td>
                                         <td>
-                                            <a href="#">Edit</a> |
-                                            <a href="#">Delete</a>
+                                            <a href="edit_building.php?building_id=<?= htmlspecialchars($building['building_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
+                                            <a href="delete_building_db.php?delete=<?= htmlspecialchars($building['building_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>

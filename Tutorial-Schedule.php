@@ -76,33 +76,11 @@
                                     <td>ครูแบมพาจี้</td>
                                     <td>A101</td>
                                     <td>จ.08.00-10.00น.</td>
-                                    <td><a href="edit_schedule.php"><i class="fa-solid fa-pen"></i></a> | <a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                    <td>
+                                        <a href="edit_schedule.php?schedule_id=<?= htmlspecialchars($subject['subj_group_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
+                                        <a href="delete_schedule_db.php?delete=<?= htmlspecialchars($subject['subj_group_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>S002</td>
-                                    <td>ภาษาไทย</td>
-                                    <td>ครูวิวแหงนฟ้า</td>
-                                    <td>A204</td>
-                                    <td>พ.09.00-12.00น.</td>
-                                    <td><a href="edit_schedule.php"><i class="fa-solid fa-pen"></i></a> | <a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>S003</td>
-                                    <td>คณิตศาสตร์</td>
-                                    <td>ครูเต้ยนักซิ่ง</td>
-                                    <td>C401</td>
-                                    <td>อ.13.00-15.00น.</td>
-                                    <td><a href="edit_schedule.php"><i class="fa-solid fa-pen"></i></a> | <a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>S004</td>
-                                    <td>ภาษายุโรป</td>
-                                    <td>ครูข้าวแซงคิว</td>
-                                    <td>D805</td>
-                                    <td>ศ.13.00-15.00น.</td>
-                                    <td><a href="edit_schedule.php"><i class="fa-solid fa-pen"></i></a> | <a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-
                             </tbody>
                         </table>
                     </div>

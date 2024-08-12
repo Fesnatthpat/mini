@@ -28,9 +28,10 @@ if (isset($_POST['update'])) {
         $fileNew = $photo2;
     }
 
-    $sql = $pdo->prepare("UPDATE room SET room_no = :room_no, building = :building, photo = :photo WHERE room_id = :room_id");
+    $sql = $pdo->prepare("UPDATE room SET room_no = :room_no, building = :building, floot = :floot, photo = :photo WHERE room_id = :room_id");
     $sql->bindParam(":room_no", $room_no);
     $sql->bindParam(":building", $building);
+    $sql->bindParam(":floot", $floot);
     $sql->bindParam(":photo", $fileNew);
     $sql->bindParam(":room_id", $room_id); // Add this line to bind t_id
     $sql->execute();

@@ -95,8 +95,8 @@ try {
                     </div>
                     <div class="form-group">
                         <label for="photo">ปกหนังสือ</label>
-                        <input type="file" id="photo" name="photo" accept="image/gif, image/jpeg, image/png">
-                    </div>
+                        <input type="file" id="imgInput" name="photo">
+                        <img id="previewImg">
                     <div class="btn-con">
                         <div class="btn-submit">
                             <button type="submit" name="add_subject">บันทึกข้อมูล</button>
@@ -109,7 +109,7 @@ try {
             </div>
         </div>
     </div>
-
+    <script src="preview_img.js"></script>
 </body>
 
 </html>

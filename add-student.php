@@ -76,7 +76,9 @@ if (!isset($_SESSION['admin_login'])) {
                     <div class="form-group">
                         <label for="photo">รูปถ่าย</label>
                         <p>image/gif, image/jpeg, image/png</p>
-                        <input type="file" id="photo" name="photo" accept="image/gif, image/jpeg, image/png">
+                        <input type="file" id="imgInput" name="photo" accept="image/gif, image/jpeg, image/png">
+                        <img id="previewImg">
+                        
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -91,14 +93,14 @@ if (!isset($_SESSION['admin_login'])) {
                             <button type="submit" name="signupstudent">บันทึกข้อมูล</button>
                         </div>
                         <div class="btn-out">
-                            <button href='data-student.php'>ออก</button>
+                            <button type="button" onclick="history.back()">ออก</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+    <script src="preview_img.js"></script>
 </body>
 
 </html>

@@ -82,17 +82,17 @@ if (isset($_POST['signupstudent'])) {
                             exit();
                         } else {
                             $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว';
-                            header("location: add-teacher.php");
+                            header("location: add-student.php");
                             exit();
                         }
                     } else {
                         $_SESSION['error'] = 'ไฟล์รูปภาพไม่ถูกต้อง';
-                        header("location: add-teacher.php");
+                        header("location: add-student.php");
                         exit();
                     }
                 } else {
                     $_SESSION['error'] = 'ประเภทไฟล์รูปภาพไม่ถูกต้อง';
-                    header("location: add-teacher.php");
+                    header("location: add-student.php");
                     exit();
                 }
             }

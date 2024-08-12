@@ -2,8 +2,12 @@
 session_start();
 require_once 'config/db.php';
 
+$stmt = $pdo->prepare("SELECT building_name FROM building");
+$stmt->execute();
+$buildingData = $stmt->fetchAll();
+
 try {
-    $stmt = $pdo->prepare("SELECT building FROM room");
+    $stmt = $pdo->prepare("SELECT floot FROM room");
     $stmt->execute();
     $dataroom = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -48,20 +52,21 @@ if (isset($_GET['room_id'])) {
                         <label for="building">อาคารเรียน</label>
                         <select name="building">
                             <option><?= htmlspecialchars($data['building']); ?></option>
-                            <?php foreach ($dataroom as $rooms) { ?>
-                                <option value="<?= htmlspecialchars($rooms['building']); ?>">
-                                    <?= htmlspecialchars($rooms['building']); ?>
+
+                            <?php foreach ($buildingData as $buildings) { ?>
+                                <option value="<?= htmlspecialchars($buildings['building_name']); ?>">
+                                    <?= htmlspecialchars($buildings['building_name']); ?>
                                 </option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="floot">ชั้น</label>
-                        <select name="floot" >
-                            <option><?= htmlspecialchars($data['floot']); ?></option>
-                            <?php foreach ($dataroom as $rooms) { ?>
-                                <option value="<?= htmlspecialchars($rooms['floot']); ?>">
-                                    <?= htmlspecialchars($rooms['floot']); ?>
+                        <select name="floot">
+                            <option><?= isset($data['floot']) ? htmlspecialchars($data['floot']) : ''; ?></option>
+                            <?php foreach ($dataroom as $floot) { ?>
+                                <option value="<?= htmlspecialchars($floot['floot']); ?>">
+                                    <?= htmlspecialchars($floot['floot']); ?>
                                 </option>
                             <?php } ?>
                         </select>

@@ -1,3 +1,23 @@
+<?php
+session_start();
+require_once 'config/db.php';
+
+try {
+    $stmt = $pdo->prepare("SELECT * FROM subject_group");
+    $stmt->execute();
+    $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+if (!isset($_SESSION['admin_login'])) {
+    $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
+    header("location: index.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -15,18 +35,18 @@
             <div class="box2">
                 <h1 class="text-teacher">ข้อมูลตารางสอน</h1>
                 <hr>
-                <div>
+                <form action="add-schedule_db.php" method="POST" >
                     <div class="form-group">
-                        <label for="name">ภาคเรียนที่1</label>
-                        <select id="level" name="level">
+                        <label for="semester">ภาคเรียนที่</label>
+                        <select name="semester">
                             <option value="">เลือกภาคเรียน</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="level">ปีการศึกษา</label>
-                        <select id="level" name="level">
+                        <label for="academic_year">ปีการศึกษา</label>
+                        <select name="academic_year">
                             <option value="">เลือกปีการศึกษา</option>
                             <option value="2567">2567</option>
                             <option value="2566">2566</option>
@@ -34,8 +54,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">วิชา</label>
-                        <select id="level" name="level">
+                        <label for="subject_id">วิชา</label>
+                        <select name="subject_id">
                             <option value="">เลือกวิชา</option>
                             <option value="">ภาษา</option>
                             <option value="">คณิตศาสตร์</option>
@@ -44,7 +64,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ระดับชั้น</label>
+                        <label for="level">ระดับชั้น</label>
                         <select id="level" name="level">
                             <option value="">เลือกระดับชั้น</option>
                             <option value="1">ม.1</option>
@@ -53,8 +73,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ครูผู้สอน</label>
-                        <select id="level" name="level">
+                        <label for="t_id">ครูผู้สอน</label>
+                        <select name="t_id">
                             <option value="">เลือกครูผู้สอน</option>
                             <option value="">ครูเต้ย</option>
                             <option value="">ครูแบม</option>
@@ -62,8 +82,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ห้องเรียน</label>
-                        <select id="level" name="level">
+                        <label for="room_id">ห้องเรียน</label>
+                        <select name="room_id">
                             <option value="">เลือกห้องเรียน</option>
                             <option value="">A001</option>
                             <option value="">B002</option>
@@ -71,8 +91,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">วัน</label>
-                        <select id="level" name="level">
+                        <label for="teacher_date">วัน</label>
+                        <select name="teacher_date">
                             <option value="">เลือกวัน</option>
                             <option value="">วันจันทร์</option>
                             <option value="">วันอังคาร</option>
@@ -87,17 +107,16 @@
                     </div>
                     <div class="btn-con">
                         <div class="btn-submit">
-                            <button type="submit">บันทึกข้อมูล</button>
+                            <button type="submit" name="add_schedule" >บันทึกข้อมูล</button>
                         </div>
                         <div class="btn-out">
-                            <button onclick="window.location.href='Tutorial-Schedule.php'">ออก</button>
+                            <button type="button" onclick="history.back()">ออก</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

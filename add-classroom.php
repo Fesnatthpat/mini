@@ -89,7 +89,8 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                     <div class="form-group">
                         <label for="photo">รูปห้องเรียน</label>
-                        <input type="file" id="photo" name="photo">
+                        <input type="file" id="imgInput" name="photo">
+                        <img id="previewImg">
                     </div>
                     <div class="btn-con">
                         <div class="btn-submit">
@@ -103,5 +104,5 @@ if (!isset($_SESSION['admin_login'])) {
             </div>
         </div>
     </div>
-
+    <script src="preview_img.js"></script>
 </body>

@@ -9,19 +9,40 @@ if (!isset($_SESSION['admin_login'])) {
     exit();
 }
 
+// รับค่าการค้นหาจากฟอร์ม
+$search_name = isset($_POST['search_name']) ? $_POST['search_name'] : '';
+$search_level = isset($_POST['search_level']) ? $_POST['search_level'] : '';
+
 try {
     // ดึงข้อมูลกลุ่มวิชาทั้งหมด
     $stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
     $stmt->execute();
     $subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // ดึงข้อมูลคุณครูทั้งหมด
-    $stmt = $pdo->prepare("SELECT * FROM teacher");
-    $stmt->execute();
+    // สร้างคำสั่ง SQL สำหรับการค้นหา
+    $query = "SELECT * FROM teacher WHERE 1=1";
+    $params = [];
+
+    if (!empty($search_name)) {
+        $query .= " AND fullname LIKE :search_name";
+        $params[':search_name'] = "%$search_name%";
+    }
+
+    if (!empty($search_level)) {
+        $query .= " AND subject_group = :search_level";
+        $params[':search_level'] = $search_level;
+    }
+
+    $query .= " ORDER BY fullname";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute($params);
     $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -43,30 +64,12 @@ try {
                 <div class="text-1">
                     <h1>ข้อมูลคุณครู</h1>
                 </div>
-                <form class="search-form" method="POST" action="search_teacher.php">
-                    <div class="form-group">
-                        <label for="search_name">ชื่อ-นามสกุล</label>
-                        <input type="text" name="search_name" required >
-                    </div>
-                    <div class="form-group">
-                        <label for="search_level">กลุ่มวิชาที่สอน</label>
-                        <select name="search_level">
-                            <option value="">เลือกกลุ่มวิชา</option>
-                            <?php foreach ($subjectGroups as $group) { ?>
-                                <option value="<?php echo htmlspecialchars($group['subj_group_name']); ?>">
-                                    <?php echo htmlspecialchars($group['subj_group_name']); ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit">ค้นหา <i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
+                
+
 
                 <div class="btn-con">
-                    <button class="add-student-button" onclick="window.location.href='add-teacher.php'">+ เพิ่มคุณครู</button>
-                    <button class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
+                    
+                    <button class="out-student-button" onclick="window.location.href='teacher.php'">ออก</button>
                 </div>
 
                 <div class="group-form1">
@@ -109,8 +112,9 @@ try {
                                 <?php } ?>
                                 <?php
 
+
                                 if (!$teacherData) {
-                                    echo "<tr><td colspan='6'>ไม่มีข้อมูล</td></tr>";
+                                    echo "ไม่มีข้อมูล";
                                 } else {
                                     foreach ($teacherData as $teacher) {
                                 ?>
@@ -122,7 +126,7 @@ try {
                                             <td><?= htmlspecialchars($teacher['subject_group']); ?></td>
                                             <td>
                                                 <a href="edit_teacher.php?t_id=<?= htmlspecialchars($teacher['t_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
-                                                <a href="delete_teacher_db.php?delete=<?= htmlspecialchars($teacher['t_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
+                                                <a href="delete_tracher_db.php?delete=<?= htmlspecialchars($teacher['t_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
                                 <?php
