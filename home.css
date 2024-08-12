@@ -39,8 +39,6 @@ body {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* border: 1px solid red; */
 }
 
 .text-1 {
@@ -51,9 +49,6 @@ body {
 
 .menu-con {
     display: flex;
-    /* justify-content: space-around; */
-    /* align-items: center; */
-    /* border: 1px solid red; */
 }
 
 .menu-con li {

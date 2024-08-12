@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                     <div class="form-group">
                         <label for="teacher_date">วัน</label>
-                        <select name="teacher_date">
+                        <select name="teacher_date" required >
                             <option value="">เลือกวัน</option>
                             <option value="">วันจันทร์</option>
                             <option value="">วันอังคาร</option>

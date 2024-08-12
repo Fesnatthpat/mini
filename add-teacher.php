@@ -65,7 +65,7 @@ if (!isset($_SESSION['admin_login'])) {
                     <?php } ?>
                     <div class="form-group">
                         <label for="t_code">รหัสประจำตัว</label>
-                        <input type="text" id="t_code" name="t_code">
+                        <input type="text" name="t_code">
                     </div>
                     <div class="form-group">
                         <label for="fullname">ชื่อ-นามสกุล</label>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin_login'])) {
                         <img id="previewImg">
                     </div>
                     <div class="form-group"> <label for="username">Username</label>
-                        <input type="text" id="username" name="username">
+                        <input type="text" name="username">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
