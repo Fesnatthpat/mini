@@ -40,6 +40,7 @@
     align-items: center;
     /* border: 1px solid red; */
     height: 100vh;
+    overflow: hidden;
 }
 
 .box-2 {
@@ -141,6 +142,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    overflow-y: scroll;
 }
 
 th,
@@ -171,3 +173,6 @@ a:hover {
     opacity: 0.7;
 }
 
+tbody {
+    
+}

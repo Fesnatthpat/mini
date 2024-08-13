@@ -8,14 +8,19 @@ if (!isset($_SESSION['admin_login'])) {
     header("location: index.php");
     exit();
 }
+
 // ดึงข้อมูลจากฐานข้อมูล
-$sql = "SELECT DISTINCT s.subject_id, s.subject_code, s.subject_name, t.t_id, t.fullname
-        FROM subject AS s
-        CROSS JOIN teacher AS t";
+$sql = "SELECT s.schedule_id, sj.subject_name, sj.subject_code, sj.subject_id, t.t_id, t.fullname, s.teacher_time, r.room_id, r.room_no
+        FROM schedule AS s
+        JOIN teacher AS t ON s.t_id = t.t_id
+        JOIN subject AS sj ON s.subject_id = sj.subject_id
+        JOIN room AS r ON s.room_id = r.room_id
+        GROUP BY s.schedule_id, sj.subject_name, sj.subject_id, t.t_id, t.fullname, r.room_id, r.room_no";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
-$subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -25,7 +30,7 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลตารางสอน</title>
-    <link rel="stylesheet" href="data-student.css">
+    <!-- <link rel="stylesheet" href="data-student.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -90,16 +95,16 @@ $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($subjects as $subject) { ?>
+                                <?php foreach ($scheduleData as $schedules) { ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($subject['subject_code']); ?></td>
-                                        <td><?= htmlspecialchars($subject['subject_name']); ?></td>
-                                        <td><?= htmlspecialchars($subject['fullname']); ?></td>
-                                        <td>--- ห้องเรียน ---</td>
-                                        <td>--- วันเวลา ---</td>
+                                        <td><?= htmlspecialchars($schedules['subject_code']); ?></td>
+                                        <td><?= htmlspecialchars($schedules['subject_name']); ?></td>
+                                        <td><?= htmlspecialchars($schedules['fullname']); ?></td>
+                                        <td><?= htmlspecialchars($schedules['room_no']); ?></td>
+                                        <td><?= htmlspecialchars($schedules['teacher_time']); ?></td>
                                         <td>
-                                            <a href="edit_schedule.php?schedule_id=<?= htmlspecialchars($subject['subject_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
-                                            <a href="delete_schedule_db.php?delete=<?= htmlspecialchars($subject['subject_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="edit_schedule.php?schedule_id=<?= htmlspecialchars($schedules['schedule_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
+                                            <a href="delete_schedule_db.php?delete=<?= htmlspecialchars($schedules['schedule_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
