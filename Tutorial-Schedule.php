@@ -1,3 +1,23 @@
+<?php
+session_start();
+require_once 'config/db.php';
+
+// ตรวจสอบว่าเป็นผู้ดูแลระบบหรือไม่
+if (!isset($_SESSION['admin_login'])) {
+    $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
+    header("location: index.php");
+    exit();
+}
+// ดึงข้อมูลจากฐานข้อมูล
+$sql = "SELECT DISTINCT s.subject_id, s.subject_code, s.subject_name, t.t_id, t.fullname
+        FROM subject AS s
+        CROSS JOIN teacher AS t";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -28,16 +48,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search-level">ภาคเรียนที่</label>
-                        <select id="search-level" name="search-level">
+                        <label for="search-semester">ภาคเรียนที่</label>
+                        <select id="search-semester" name="search-semester">
                             <option value="">เลือกภาคเรียน</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search-level">ปีการศึกษา</label>
-                        <select id="search-level" name="search-level">
+                        <label for="search-year">ปีการศึกษา</label>
+                        <select id="search-year" name="search-year">
                             <option value="">เลือกปีการศึกษา</option>
                             <option value="2567">2567</option>
                             <option value="2566">2566</option>
@@ -70,24 +90,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>S001</td>
-                                    <td>เคมี 2</td>
-                                    <td>ครูแบมพาจี้</td>
-                                    <td>A101</td>
-                                    <td>จ.08.00-10.00น.</td>
-                                    <td>
-                                        <a href="edit_schedule.php?schedule_id=<?= htmlspecialchars($subject['subj_group_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
-                                        <a href="delete_schedule_db.php?delete=<?= htmlspecialchars($subject['subj_group_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($subjects as $subject) { ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($subject['subject_code']); ?></td>
+                                        <td><?= htmlspecialchars($subject['subject_name']); ?></td>
+                                        <td><?= htmlspecialchars($subject['fullname']); ?></td>
+                                        <td>--- ห้องเรียน ---</td>
+                                        <td>--- วันเวลา ---</td>
+                                        <td>
+                                            <a href="edit_schedule.php?schedule_id=<?= htmlspecialchars($subject['subject_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
+                                            <a href="delete_schedule_db.php?delete=<?= htmlspecialchars($subject['subject_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 </body>

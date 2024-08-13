@@ -12,50 +12,42 @@ if (isset($_POST['add_schedule'])) {
     $teacher_date = $_POST['teacher_date'];
     $teacher_time = $_POST['teacher_time'];
 
+    // ตรวจสอบการกรอกข้อมูล
     if (empty($semester)) {
         $_SESSION['error'] = 'กรุณากรอกภาคเรียน';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($academic_year)) {
+    } elseif (empty($academic_year)) {
         $_SESSION['error'] = 'กรุณากรอกปีการศึกษา';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($subject_id)) {
+    } elseif (empty($subject_id)) {
         $_SESSION['error'] = 'กรุณากรอกรหัสวิชา';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($level)) {
+    } elseif (empty($level)) {
         $_SESSION['error'] = 'กรุณากรอกระดับ';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($t_id)) {
+    } elseif (empty($t_id)) {
         $_SESSION['error'] = 'กรุณากรอกรหัสอาจารย์';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($room_id)) {
+    } elseif (empty($room_id)) {
         $_SESSION['error'] = 'กรุณากรอกหมายเลขห้อง';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($teacher_date)) {
+    } elseif (empty($teacher_date)) {
         $_SESSION['error'] = 'กรุณากรอกวันสอน';
-        header("location: add-schedule.php");
-        exit();
-    } else if (empty($teacher_time)) {
+    } elseif (empty($teacher_time)) {
         $_SESSION['error'] = 'กรุณากรอกเวลาเรียน';
-        header("location: add-schedule.php");
-        exit();
     } else {
         try {
-            $chk_subjectname = $pdo->prepare("SELECT subject_code FROM subject WHERE subject_code = :subject_code");
-            $chk_subjectname->bindParam(":subject_code", $subject_code);
-            $chk_subjectname->execute();
-            $subjectData = $chk_subjectname->fetch(PDO::FETCH_ASSOC);
+            // ตรวจสอบความซ้ำซ้อนของข้อมูล
+            $chk_schedule = $pdo->prepare("SELECT * FROM schedule WHERE semester = :semester AND academic_year = :academic_year AND subject_id = :subject_id AND level = :level AND t_id = :t_id AND room_id = :room_id AND teacher_date = :teacher_date AND teacher_time = :teacher_time");
+            $chk_schedule->bindParam(":semester", $semester);
+            $chk_schedule->bindParam(":academic_year", $academic_year);
+            $chk_schedule->bindParam(":subject_id", $subject_id);
+            $chk_schedule->bindParam(":level", $level);
+            $chk_schedule->bindParam(":t_id", $t_id);
+            $chk_schedule->bindParam(":room_id", $room_id);
+            $chk_schedule->bindParam(":teacher_date", $teacher_date);
+            $chk_schedule->bindParam(":teacher_time", $teacher_time);
+            $chk_schedule->execute();
+            $existingSchedule = $chk_schedule->fetch(PDO::FETCH_ASSOC);
 
-            if ($subjectData) {
-                $_SESSION['warning'] = 'มีข้อมูลในระบบแล้ว';
-                header("location: add-schedule.php");
-                exit;
+            if ($existingSchedule) {
+                $_SESSION['warning'] = 'ข้อมูลตารางสอนนี้มีอยู่แล้ว';
             } else {
+                // บันทึกข้อมูลลงฐานข้อมูล
                 $stmt = $pdo->prepare("INSERT INTO schedule (semester, academic_year, subject_id, level, t_id, room_id, teacher_date, teacher_time) VALUES (:semester, :academic_year, :subject_id, :level, :t_id, :room_id, :teacher_date, :teacher_time)");
                 $stmt->bindParam(":semester", $semester);
                 $stmt->bindParam(":academic_year", $academic_year);
@@ -67,12 +59,13 @@ if (isset($_POST['add_schedule'])) {
                 $stmt->bindParam(":teacher_time", $teacher_time);
                 $stmt->execute();
                 $_SESSION['success'] = 'เพิ่มข้อมูลเรียบร้อยแล้ว';
-                header("location: Tutorial-Schedule.php");
-                exit;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            $_SESSION['error'] = 'เกิดข้อผิดพลาดในการเชื่อมต่อฐานข้อมูล: ' . $e->getMessage();
         }
     }
+
+    header("location: add-schedule.php");
+    exit();
 }
 ?>
