@@ -1,164 +1,103 @@
-<?php
-session_start();
-require_once 'config/db.php';
-
-if (!isset($_SESSION['admin_login'])) {
-    $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
-    header("location: index.php");
-    exit();
-}
-
-try {
-    // ดึงข้อมูลระดับชั้น
-    $stmt = $pdo->prepare("SELECT level FROM student GROUP BY level");
-    $stmt->execute();
-    $datlevel = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // ดึงข้อมูลกลุ่มวิชา
-    $stmt = $pdo->prepare("SELECT subject_id, subject_name  FROM subject");
-    $stmt->execute();
-    $subjectData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // ดึงข้อมูลชื่อครู
-    $stmt = $pdo->prepare("SELECT t_id, fullname FROM teacher");
-    $stmt->execute();
-    $datateacher = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // ดึงข้อมูลหมายเลขห้อง
-    $stmt = $pdo->prepare("SELECT room_id, room_no FROM room");
-    $stmt->execute();
-    $dataroom = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
-
-<!DOCTYPE html>
-<html lang="th">
+<!DOCTYPE html> <!-- ประกาศว่าเอกสารนี้เป็น HTML5 -->
+<html lang="th"> <!-- กำหนดภาษาเป็นภาษาไทย -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มตารางสอน</title>
-    <link rel="stylesheet" href="add-schedule.css">
+    <meta charset="UTF-8"> <!-- กำหนดการเข้ารหัสตัวอักษรเป็น UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- กำหนด viewport สำหรับการแสดงผลบนอุปกรณ์มือถือ -->
+    <title>เพิ่มตารางสอน</title> <!-- กำหนดชื่อเอกสารที่จะแสดงบนแท็บเบราว์เซอร์ -->
+    <link rel="stylesheet" href="add-schedule.css"> <!-- เชื่อมโยงไปยังไฟล์ CSS สำหรับการจัดรูปแบบ -->
 </head>
 
 <body>
-    <div class="form-container">
-        <div class="box1">
-            <div class="box2">
-                <h1 class="text-teacher">ข้อมูลตารางสอน</h1>
-                <hr>
-                <form action="add-schedule_db.php" method="POST">
-                    <?php if (isset($_SESSION['error'])) { ?>
-                        <div class="alert-danger"><?php echo $_SESSION['error'];
-                                                    unset($_SESSION['error']); ?></div>
-                    <?php } ?>
-                    <?php if (isset($_SESSION['success'])) { ?>
-                        <div class="alert-success"><?php echo $_SESSION['success'];
-                                                    unset($_SESSION['success']); ?></div>
-                    <?php } ?>
-                    <?php if (isset($_SESSION['warning'])) { ?>
-                        <div class="alert-warning"><?php echo $_SESSION['warning'];
-                                                    unset($_SESSION['warning']); ?></div>
-                    <?php } ?>
 
-                    <div class="form-group">
-                        <label for="semester">ภาคเรียนที่</label>
-                        <select name="semester" required>
-                            <option value="">เลือกภาคเรียน</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+    <div class="form-container"> <!-- กล่องหลักที่บรรจุฟอร์ม -->
+        <div class="box1"> <!-- กล่องใหญ่ที่จัดตำแหน่งเนื้อหากลางหน้าจอ -->
+            <div class="box2"> <!-- กล่องย่อยที่บรรจุฟอร์มและเนื้อหา -->
+                <h1 class="text-teacher">ข้อมูลตารางสอน</h1> <!-- หัวข้อของฟอร์ม -->
+                <hr> <!-- เส้นแบ่ง -->
+                <div>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับภาคเรียน -->
+                        <label for="name">ภาคเรียนที่1</label> <!-- ป้ายชื่อสำหรับเมนูเลือกภาคเรียน -->
+                        <select id="level" name="level"> <!-- เมนูเลือกภาคเรียน -->
+                            <option value="">เลือกภาคเรียน</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="1">1</option> <!-- ตัวเลือกภาคเรียนที่ 1 -->
+                            <option value="2">2</option> <!-- ตัวเลือกภาคเรียนที่ 2 -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="academic_year">ปีการศึกษา</label>
-                        <select name="academic_year" required>
-                            <option value="">เลือกปีการศึกษา</option>
-                            <option value="2567">2567</option>
-                            <option value="2566">2566</option>
-                            <option value="2565">2565</option>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับปีการศึกษา -->
+                        <label for="level">ปีการศึกษา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกปีการศึกษา -->
+                        <select id="level" name="level"> <!-- เมนูเลือกปีการศึกษา -->
+                            <option value="">เลือกปีการศึกษา</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="2567">2567</option> <!-- ตัวเลือกปีการศึกษา 2567 -->
+                            <option value="2566">2566</option> <!-- ตัวเลือกปีการศึกษา 2566 -->
+                            <option value="2565">2565</option> <!-- ตัวเลือกปีการศึกษา 2565 -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="subject_group">วิชา</label>
-                        <select name="subject_id">
-                            <option value="">เลือกกลุ่มวิชา</option>
-                            <?php foreach ($subjectData as $subjects) { ?>
-                                <option value="<?php echo htmlspecialchars($subjects['subject_id']); ?>">
-                                    <?php echo htmlspecialchars($subjects['subject_name']); ?>
-                                </option>
-                            <?php } ?>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับวิชา -->
+                        <label for="name">วิชา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวิชา -->
+                        <select id="level" name="level"> <!-- เมนูเลือกวิชา -->
+                            <option value="">เลือกวิชา</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="">ภาษา</option> <!-- ตัวเลือกวิชา ภาษา -->
+                            <option value="">คณิตศาสตร์</option> <!-- ตัวเลือกวิชา คณิตศาสตร์ -->
+                            <option value="">วิทยาศาสตร์</option> <!-- ตัวเลือกวิชา วิทยาศาสตร์ -->
+                            <option value="">สังคมศาสตร์</option> <!-- ตัวเลือกวิชา สังคมศาสตร์ -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="level">ระดับชั้น</label>
-                        <select name="level" required>
-                            <option value="">เลือกระดับชั้น</option>
-                            <?php foreach ($datlevel as $levels) { ?>
-                                <option value="<?php echo htmlspecialchars($levels['level']); ?>">
-                                    <?php echo htmlspecialchars($levels['level']); ?>
-                                </option>
-                            <?php } ?>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับระดับชั้น -->
+                        <label for="name">ระดับชั้น</label> <!-- ป้ายชื่อสำหรับเมนูเลือกระดับชั้น -->
+                        <select id="level" name="level"> <!-- เมนูเลือกระดับชั้น -->
+                            <option value="">เลือกระดับชั้น</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="1">ม.1</option> <!-- ตัวเลือกระดับชั้น ม.1 -->
+                            <option value="2">ม.2</option> <!-- ตัวเลือกระดับชั้น ม.2 -->
+                            <option value="3">ม.3</option> <!-- ตัวเลือกระดับชั้น ม.3 -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="t_id">ครูผู้สอน</label>
-                        <select name="t_id" required>
-                            <option value="">เลือกครูผู้สอน</option>
-                            <?php foreach ($datateacher as $teachers) { ?>
-                                <option value="<?php echo htmlspecialchars($teachers['t_id']); ?>">
-                                    <?php echo htmlspecialchars($teachers['fullname']); ?>
-                                </option>
-                            <?php } ?>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับครูผู้สอน -->
+                        <label for="name">ครูผู้สอน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกครูผู้สอน -->
+                        <select id="level" name="level"> <!-- เมนูเลือกครูผู้สอน -->
+                            <option value="">เลือกครูผู้สอน</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="">ครูเต้ย</option> <!-- ตัวเลือกครูผู้สอน ครูเต้ย -->
+                            <option value="">ครูแบม</option> <!-- ตัวเลือกครูผู้สอน ครูแบม -->
+                            <option value="">ครูวิว</option> <!-- ตัวเลือกครูผู้สอน ครูวิว -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="room_id">ห้องเรียน</label>
-                        <select name="room_id" required>
-                            <option value="">เลือกห้องเรียน</option>
-                            <?php foreach ($dataroom as $rooms) { ?>
-                                <option value="<?php echo htmlspecialchars($rooms['room_id']); ?>">
-                                    <?php echo htmlspecialchars($rooms['room_no']); ?>
-                                </option>
-                            <?php } ?>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับห้องเรียน -->
+                        <label for="name">ห้องเรียน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกห้องเรียน -->
+                        <select id="level" name="level"> <!-- เมนูเลือกห้องเรียน -->
+                            <option value="">เลือกห้องเรียน</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="">A001</option> <!-- ตัวเลือกห้องเรียน A001 -->
+                            <option value="">B002</option> <!-- ตัวเลือกห้องเรียน B002 -->
+                            <option value="">C003</option> <!-- ตัวเลือกห้องเรียน C003 -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="teacher_date">วัน</label>
-                        <select name="teacher_date" required>
-                            <option value="">เลือกวัน</option>
-                            <option value="วันจันทร์">วันจันทร์</option>
-                            <option value="วันอังคาร">วันอังคาร</option>
-                            <option value="วันพุธ">วันพุธ</option>
-                            <option value="วันพฤหัสบดี">วันพฤหัสบดี</option>
-                            <option value="วันศุกร์">วันศุกร์</option>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับวัน -->
+                        <label for="name">วัน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวัน -->
+                        <select id="level" name="level"> <!-- เมนูเลือกวัน -->
+                            <option value="">เลือกวัน</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="">วันจันทร์</option> <!-- ตัวเลือกวันจันทร์ -->
+                            <option value="">วันอังคาร</option> <!-- ตัวเลือกวันอังคาร -->
+                            <option value="">วันพุธ</option> <!-- ตัวเลือกวันพุธ -->
+                            <option value="">วันพฤหัสบดี</option> <!-- ตัวเลือกวันพฤหัสบดี -->
+                            <option value="">วันศุกร์</option> <!-- ตัวเลือกวันศุกร์ -->
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="teacher_time">เวลา</label>
-                        <input type="text" name="teacher_time" required>
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับเวลา -->
+                        <label for="search-name">เวลา</label> <!-- ป้ายชื่อสำหรับช่องกรอกเวลา -->
+                        <input type="text" id="search-name" name="search-name"> <!-- ช่องกรอกข้อมูลเวลา -->
                     </div>
-
-                    <div class="btn-con">
-                        <div class="btn-submit">
-                            <button type="submit" name="add_schedule">บันทึกข้อมูล</button>
+                    <div class="btn-con"> <!-- กลุ่มปุ่มสำหรับบันทึกข้อมูลและออก -->
+                        <div class="btn-submit"> <!-- กล่องปุ่มบันทึกข้อมูล -->
+                            <button type="submit">บันทึกข้อมูล</button> <!-- ปุ่มสำหรับบันทึกข้อมูล -->
                         </div>
-                        <div class="btn-out">
-                            <button type="button" onclick="history.back()">ออก</button>
+                        <div class="btn-out"> <!-- กล่องปุ่มออก -->
+                            <button onclick="window.location.href='Tutorial-Schedule.php'">ออก</button> <!-- ปุ่มสำหรับออกจากฟอร์มและไปยังหน้า Tutorial-Schedule.php -->
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

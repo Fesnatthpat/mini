@@ -1,107 +1,104 @@
+/* นำเข้าฟอนต์จาก Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ตั้งค่าเริ่มต้นสำหรับทุกองค์ประกอบในหน้า */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-
-
+    margin: 0; /* กำหนดค่า margin เป็น 0 สำหรับทุกองค์ประกอบ เพื่อไม่ให้มีช่องว่างรอบๆ */
+    padding: 0; /* กำหนดค่า padding เป็น 0 สำหรับทุกองค์ประกอบ เพื่อไม่ให้มีช่องว่างภายใน */
+    box-sizing: border-box; /* ใช้ box-sizing: border-box เพื่อให้การคำนวณขนาดรวม border และ padding ใน width และ height */
+    font-family: "Kanit", sans-serif; /* กำหนดฟอนต์หลักเป็น Kanit และใช้ฟอนต์สำรองเป็น sans-serif */
+    font-weight: 300; /* กำหนดน้ำหนักฟอนต์เป็น 300 (เบา) */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */
+    font-family: "Kanit", sans-serif; /* ฟอนต์หลักที่ใช้คือ Kanit */
+    font-weight: 400; /* กำหนดน้ำหนักฟอนต์เป็น 400 (ปกติ) */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */
+    font-family: "Kanit", sans-serif; /* ฟอนต์หลักที่ใช้คือ Kanit */
+    font-weight: 500; /* กำหนดน้ำหนักฟอนต์เป็น 500 (ปานกลาง) */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */  
 }
 
+/* คอนเทนเนอร์หลักสำหรับฟอร์ม */
 .form-container {
-    max-width: 100vw;
-    margin: 0 auto;
-    background-image: url('bg-img/stacked-steps-haikei.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    max-width: 100vw; /* กำหนดความกว้างสูงสุดให้เท่ากับความกว้างของหน้าจอ */
+    margin: 0 auto; /* จัดให้องค์ประกอบอยู่กลางแนวนอน */
+    background-image: url('bg-img/stacked-steps-haikei.svg'); /* ใช้ URL ของภาพ SVG ที่ต้องการเป็นพื้นหลัง */
+    background-size: cover; /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
+    background-position: center; /* จัดภาพให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ทำซ้ำภาพ */
 }
 
+/* กล่องหลักสำหรับจัดตำแหน่งฟอร์ม */
 .box1 {
-    border: 1px solid red;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh; /* กำหนดความสูงของกล่องให้เต็มความสูงของหน้าจอ */
+    display: flex; /* ใช้ Flexbox สำหรับการจัดตำแหน่งภายใน */
+    justify-content: center; /* จัดตำแหน่งเนื้อหาในแนวนอนให้อยู่กลางกล่อง */
+    align-items: center;/* จัดตำแหน่งเนื้อหาในแนวตั้งให้อยู่กลางกล่อง */
 }
 
+/* กล่องหลักสำหรับการจัดรูปแบบฟอร์ม */
 .box2 {
-    width: 500px;
-    padding: 20px;
-    box-shadow: 0px 5px 10px black;
-    background: #fcfcfc;
-    border-radius: 8px;
+    width: 500px; /* กำหนดความกว้างของกล่องเป็น 500px */
+    padding: 20px; /* กำหนด padding เป็น 20px ภายในกล่อง */
+    box-shadow: 0px 5px 10px black; /* เพิ่มเงาดำที่ด้านล่างและด้านข้างของกล่อง */
+    background: #fcfcfc; /* กำหนดสีพื้นหลังของกล่องเป็นสีเทาอ่อน */
+    border-radius: 8px; /* กำหนดให้มุมของกล่องมีความโค้งมนที่รัศมี 8px */
 }
 
-
+/* การจัดรูปแบบข้อความในหัวเรื่อง */
 .text-teacher {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
+    text-align: center; /* จัดตำแหน่งข้อความให้อยู่กลาง */
+    font-size: 24px; /* ตั้งขนาดฟอนต์เป็น 24px */
+    margin-bottom: 10px; /* กำหนด margin ด้านล่างของข้อความเป็น 10px */
 }
+
+/* การจัดกลุ่มของฟอร์ม */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* กำหนด margin ด้านล่างของกลุ่มฟอร์มเป็น 15px */
 }
+
+/* การจัดรูปแบบป้ายในกลุ่มฟอร์ม */
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    display: block; /* กำหนดให้ (label) แสดงเป็นบล็อกเพื่อให้เริ่มบรรทัดใหม่ */
+    font-weight: bold; /* ปรับขนาดน้ำหนักฟอนต์เป็นขนาดหนา */
+    margin-bottom: 5px; /* เพิ่ม margin ด้านล่าง 5px */
 }
+
+/* การจัดรูปแบบช่องกรอกข้อมูลและเมนูดรอปดาวน์ในกลุ่มฟอร์ม */
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    outline: none;
+    width: 100%; /* ตั้งความกว้างเป็น 100% ของกล่องพ่อ */
+    padding: 8px; /* เพิ่มพื้นที่ว่าง 8px รอบๆขอบช่องกรอกข้อมูล */
+    border: 1px solid #ccc; /* ตั้งค่าสีขอบเป็นสีเทาอ่อน */
+    border-radius: 3px; /* มุมของช่องกรอกข้อมูลจะถูกทำให้โค้งมนด้วยรัศมี 3px */
+    box-sizing: border-box; /* ให้รวม padding และ border ในขนาดของช่องกรอกข้อมูล */
+    outline: none; /* ลบขอบนอกที่เกิดจากการโฟกัส */
 }
 
-
+/* การจัดกลุ่มปุ่ม */
 .btn-con {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: flex; /* ใช้ Flexbox สำหรับการจัดตำแหน่งปุ่ม */
+    justify-content: space-around; /* จัดตำแหน่งปุ่มให้ห่างกันอย่างเท่าๆ กัน */
+    align-items: center; /* จัดตำแหน่งปุ่มในแนวตั้งให้อยู่กลาง */
 }
 
-.btn-submit button{
-    padding: 10px 50px;
-    width: 200px;
-    background: rgb(53, 174, 255);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
+/* การจัดรูปแบบปุ่มบันทึก */
+.btn-submit button {
+    padding: 10px 50px; /* เพิ่มพื้นที่ว่างภายในปุ่ม ด้านบน/ล่าง 10px และ ด้านซ้าย/ขวา 50px */
+    width: 200px; /* กำหนดความกว้างของปุ่มบันทึกข้อมูลเป็น 200px */
+    background: rgb(53, 174, 255); /* ตั้งค่าสีพื้นหลังของปุ่มเป็นสีฟ้า */
+    border: none; /* ลบขอบของปุ่ม */
+    border-radius: 15px; /* มุมของปุ่มจะถูกทำให้โค้งมนด้วยรัศมี 15px */
+    color: #fcfcfc; /* ตั้งค่าสีข้อความภายในปุ่มเป็นสีขาว */
+    font-size: 15px; /* ตั้งขนาดฟอนต์เป็น 15px */
 }
 
+/* การจัดรูปแบบปุ่มออก */
 .btn-out button {
-    width: 200px;
-    padding: 10px 50px;
-    background: rgb(238, 57, 57);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
-}
-
-#previewImg {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-    border: 1px solid rgb(0, 0, 0);
-}
-
-img {
-    
-    width: 100%;
-    height: 100%;
+    width: 200px; /* ตั้งความกว้างของปุ่มเป็น 200px */
+    padding: 10px 50px; /* เพิ่มพื้นที่ว่างภายในปุ่ม 10px ด้านบน/ล่าง และ 50px ด้านซ้าย/ขวา */
+    background: rgb(238, 57, 57); /* ตั้งค่าสีพื้นหลังของปุ่มเป็นสีแดง */
+    border: none; /* ลบขอบของปุ่ม */
+    border-radius: 15px; /* มุมของปุ่มจะถูกทำให้โค้งมนด้วยรัศมี 15px */
+    color: #fcfcfc; /* ตั้งค่าสีข้อความภายในปุ่มเป็นสีขาว */
+    font-size: 15px; /* ตั้งขนาดฟอนต์เป็น 15px */
 }
