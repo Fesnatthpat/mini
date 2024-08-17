@@ -3,7 +3,7 @@ session_start();
 require_once 'config/db.php';
 
 // ตรวจสอบว่าเป็นผู้ดูแลระบบหรือไม่
-if (!isset($_SESSION['admin_login'])) {
+if (!isset($_SESSION['user_login'])) {
     $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
     header("location: index.php");
     exit();
@@ -30,7 +30,7 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลตารางสอน</title>
-    <link rel="stylesheet" href="data-student.css">
+    <link rel="stylesheet" href="schedule_teacher.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -40,7 +40,7 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="box-1">
             <div class="box-2">
                 <div class="text-1">
-                    <h1>ข้อมูลตารางสอน</h1>
+                    <h1>ข้อมูลตารางสอนคุณครู</h1>
                 </div>
                 <div class="search-form">
                     <div class="form-group">
@@ -69,9 +69,6 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <option value="2565">2565</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <button type="button">ค้นหา <i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
                 </div>
 
                 <div class="btn-con">
@@ -79,7 +76,7 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
                 </div>
                 <text class="2">
-                    <h2>ตารางสอน ระดับชั้นม.1 ภาคเรียนที่1/2567</h2> <br>
+                    <h2>ตารางสอนคุณครู</h2> <br>
                 </text>
                 <div class="group-form1">
                     <div class="group-form2">

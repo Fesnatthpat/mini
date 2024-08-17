@@ -1,78 +1,78 @@
 <?php
-session_start();
-require 'config/db.php';
+session_start(); // เริ่มต้นเซสชัน PHP เพื่อใช้ในการเก็บข้อมูลระหว่างการทำงานของสคริปต์
+require 'config/db.php'; // นำเข้าไฟล์การตั้งค่าฐานข้อมูล เพื่อเตรียมเชื่อมต่อกับฐานข้อมูล
 
-if (isset($_POST['add_classroom'])) {
-    $room_no = $_POST['room_no'];
-    $building = $_POST['building'];
-    $floot = $_POST['floot'];
-    $photo = $_FILES['photo'];
+if (isset($_POST['add_classroom'])) { // ตรวจสอบว่ามีการส่งข้อมูลผ่านแบบฟอร์มที่มีปุ่มชื่อ 'add_classroom' หรือไม่
+    $room_no = $_POST['room_no']; // เก็บค่าหมายเลขห้องเรียนที่ผู้ใช้ป้อนมาในตัวแปร $room_no
+    $building = $_POST['building']; // เก็บค่าชื่ออาคารที่ผู้ใช้ป้อนมาในตัวแปร $building
+    $floot = $_POST['floot']; // เก็บค่าชั้นของอาคารที่ผู้ใช้ป้อนมาในตัวแปร $floot
+    $photo = $_FILES['photo']; // เก็บไฟล์รูปภาพที่ผู้ใช้อัพโหลดมาในตัวแปร $photo
 
-    if (empty($room_no)) {
-        $_SESSION['error'] = 'กรุณากรอกรหัสวิชา';
-        header("location: add-classroom.php");
-        exit();
-    } else if (empty($building)) {
-        $_SESSION['error'] = 'กรุณากรอกชื่อวิชา';
-        header("location: add-classroom.php");
-        exit();
-    } else if (empty($floot)) {
-        $_SESSION['error'] = 'กรุณากรอกระดับชั้น';
-        header("location: add-classroom.php");
-        exit();
-    } else if (empty($photo['name'])) {
-        $_SESSION['error'] = 'กรุณาเพิ่มไฟล์รูป';
-        header("location: add-classroom.php");
-        exit();
-    } else {
+    if (empty($room_no)) { // ตรวจสอบว่าผู้ใช้ได้กรอกหมายเลขห้องเรียนหรือไม่
+        $_SESSION['error'] = 'กรุณากรอกรหัสวิชา'; // หากผู้ใช้ไม่ได้กรอกหมายเลขห้องเรียน จะแสดงข้อความข้อผิดพลาดผ่านเซสชัน
+        header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+        exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+    } else if (empty($building)) { // ตรวจสอบว่าผู้ใช้ได้กรอกชื่ออาคารหรือไม่
+        $_SESSION['error'] = 'กรุณากรอกชื่อวิชา'; // หากผู้ใช้ไม่ได้กรอกชื่ออาคาร จะแสดงข้อความข้อผิดพลาดผ่านเซสชัน
+        header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+        exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+    } else if (empty($floot)) { // ตรวจสอบว่าผู้ใช้ได้กรอกชั้นของอาคารหรือไม่
+        $_SESSION['error'] = 'กรุณากรอกระดับชั้น'; // หากผู้ใช้ไม่ได้กรอกชั้นของอาคาร จะแสดงข้อความข้อผิดพลาดผ่านเซสชัน
+        header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+        exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+    } else if (empty($photo['name'])) { // ตรวจสอบว่าผู้ใช้ได้อัพโหลดไฟล์รูปภาพหรือไม่
+        $_SESSION['error'] = 'กรุณาเพิ่มไฟล์รูป'; // หากผู้ใช้ไม่ได้อัพโหลดไฟล์รูปภาพ จะแสดงข้อความข้อผิดพลาดผ่านเซสชัน
+        header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+        exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+    } else { // หากผู้ใช้กรอกข้อมูลครบถ้วนแล้ว
         try {
-            $chk_roomname = $pdo->prepare("SELECT room_no FROM room WHERE room_no = :room_no");
-            $chk_roomname->bindParam(":room_no", $room_no);
-            $chk_roomname->execute();
-            $roomData = $chk_roomname->fetch(PDO::FETCH_ASSOC);
+            $chk_roomname = $pdo->prepare("SELECT room_no FROM room WHERE room_no = :room_no"); // เตรียมคำสั่ง SQL เพื่อเช็คว่ามีหมายเลขห้องเรียนนี้อยู่ในฐานข้อมูลหรือไม่
+            $chk_roomname->bindParam(":room_no", $room_no); // ผูกค่าหมายเลขห้องเรียนที่ผู้ใช้กรอกเข้ากับพารามิเตอร์ในคำสั่ง SQL
+            $chk_roomname->execute(); // ดำเนินการคำสั่ง SQL
+            $roomData = $chk_roomname->fetch(PDO::FETCH_ASSOC); // ดึงข้อมูลจากผลลัพธ์ของคำสั่ง SQL
 
-            if ($roomData) {
-                $_SESSION['warning'] = 'มีชื่อวิชานี้อยู่ในระบบแล้ว';
-                header("location: add-classroom.php");
-                exit();
-            } else {
-                $allow = array('jpg', 'jpeg', 'png');
-                $extention = explode(".", $photo['name']);
-                $fileActExt = strtolower(end($extention));
-                $fileNew = rand() . "." . $fileActExt;
-                $filePath = "uploads_classroom/" . $fileNew;
+            if ($roomData) { // ตรวจสอบว่าพบหมายเลขห้องเรียนในฐานข้อมูลหรือไม่
+                $_SESSION['warning'] = 'มีชื่อวิชานี้อยู่ในระบบแล้ว'; // หากพบหมายเลขห้องเรียน จะแสดงข้อความเตือนผ่านเซสชัน
+                header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+            } else { // หากไม่พบหมายเลขห้องเรียน
+                $allow = array('jpg', 'jpeg', 'png'); // กำหนดประเภทไฟล์รูปภาพที่อนุญาตให้อัพโหลด
+                $extention = explode(".", $photo['name']); // แยกชื่อไฟล์และนามสกุลไฟล์รูปภาพออกจากกัน
+                $fileActExt = strtolower(end($extention)); // แปลงนามสกุลไฟล์รูปภาพให้เป็นตัวพิมพ์เล็ก
+                $fileNew = rand() . "." . $fileActExt; // สร้างชื่อไฟล์ใหม่โดยใช้ตัวเลขสุ่มและนามสกุลไฟล์
+                $filePath = "uploads_classroom/" . $fileNew; // กำหนดเส้นทางสำหรับเก็บไฟล์รูปภาพที่อัพโหลด
 
-                if (in_array($fileActExt, $allow)) {
-                    if ($photo['size'] > 0 && $photo['error'] == 0) {
-                        if (move_uploaded_file($photo['tmp_name'], $filePath)) {
+                if (in_array($fileActExt, $allow)) { // ตรวจสอบว่านามสกุลไฟล์รูปภาพอยู่ในประเภทที่อนุญาตหรือไม่
+                    if ($photo['size'] > 0 && $photo['error'] == 0) { // ตรวจสอบขนาดและข้อผิดพลาดของไฟล์รูปภาพ
+                        if (move_uploaded_file($photo['tmp_name'], $filePath)) { // ย้ายไฟล์รูปภาพไปยังเส้นทางที่กำหนด
                             $stmt = $pdo->prepare("INSERT INTO room (room_no, building, floot, photo)
-                                        VALUES(:room_no, :building, :floot, :photo)");
-                            $stmt->bindParam(":room_no", $room_no);
-                            $stmt->bindParam(":building", $building);
-                            $stmt->bindParam(":floot", $floot);
-                            $stmt->bindParam(":photo", $fileNew);
-                            $stmt->execute();
-                            $_SESSION['success'] = 'เพิ่มวิชาเรียบร้อยแล้ว';
-                            header("location: add-classroom.php");
-                            exit();
-                        } else {
-                            $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว';
-                            header("location: add-classroom.php");
-                            exit();
+                                        VALUES(:room_no, :building, :floot, :photo)"); // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูลห้องเรียนลงในฐานข้อมูล
+                            $stmt->bindParam(":room_no", $room_no); // ผูกค่าหมายเลขห้องเรียนกับพารามิเตอร์ในคำสั่ง SQL
+                            $stmt->bindParam(":building", $building); // ผูกค่าชื่ออาคารกับพารามิเตอร์ในคำสั่ง SQL
+                            $stmt->bindParam(":floot", $floot); // ผูกค่าชั้นของอาคารกับพารามิเตอร์ในคำสั่ง SQL
+                            $stmt->bindParam(":photo", $fileNew); // ผูกชื่อไฟล์รูปภาพใหม่กับพารามิเตอร์ในคำสั่ง SQL
+                            $stmt->execute(); // ดำเนินการคำสั่ง SQL เพื่อเพิ่มข้อมูลในฐานข้อมูล
+                            $_SESSION['success'] = 'เพิ่มวิชาเรียบร้อยแล้ว'; // แสดงข้อความสำเร็จผ่านเซสชัน
+                            header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                            exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
+                        } else { // หากการย้ายไฟล์รูปภาพล้มเหลว
+                            $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว'; // แสดงข้อความข้อผิดพลาดผ่านเซสชัน
+                            header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                            exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
                         }
-                    } else {
-                        $_SESSION['error'] = 'ไฟล์รูปภาพไม่ถูกต้อง';
-                        header("location: add-classroom.php");
-                        exit();
+                    } else { // หากไฟล์รูปภาพมีขนาดไม่ถูกต้องหรือเกิดข้อผิดพลาด
+                        $_SESSION['error'] = 'ไฟล์รูปภาพไม่ถูกต้อง'; // แสดงข้อความข้อผิดพลาดผ่านเซสชัน
+                        header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                        exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
                     }
-                } else {
-                    $_SESSION['error'] = 'ประเภทไฟล์รูปภาพไม่ถูกต้อง';
-                    header("location: add-classroom.php");
-                    exit();
+                } else { // หากนามสกุลไฟล์รูปภาพไม่ถูกต้อง
+                    $_SESSION['error'] = 'ประเภทไฟล์รูปภาพไม่ถูกต้อง'; // แสดงข้อความข้อผิดพลาดผ่านเซสชัน
+                    header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                    exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
                 }
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        } catch (PDOException $e) { // จับข้อผิดพลาดหากมีการเกิดขึ้น
+            echo $e->getMessage(); // แสดงข้อความข้อผิดพลาด
         }
     }
 }
