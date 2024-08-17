@@ -55,10 +55,14 @@ if (!isset($_SESSION['user_login'])) {
                         <form action="logout.php" method="post">
                             <button type="submit" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
+        <?php
+        include_once("schedule_teacher.php");
+        ?>
     </div>
 </body>
 
