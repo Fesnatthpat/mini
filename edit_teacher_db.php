@@ -15,13 +15,9 @@ if (isset($_POST['update'])) {
     $subject_group = $_POST['subject_group']; // รับกลุ่มวิชาของครูจากฟอร์ม
     $photo = $_FILES['photo']; // รับข้อมูลไฟล์ภาพจากฟอร์ม
 
-<<<<<<< HEAD
-    $photo2 = $_POST['photo2']; //รูปเดิม
-    $upload = $_FILES['photo']['name']; //รูปภาพใหม่
-=======
+
     $photo2 = $_POST['photo2']; // รับชื่อไฟล์ภาพเก่าจากฟอร์ม
     $upload = $_FILES['photo']['name']; // รับชื่อไฟล์ภาพใหม่
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
 
     // ตรวจสอบว่ามีการอัพโหลดไฟล์ใหม่หรือไม่
     if ($upload != '') {
@@ -54,15 +50,11 @@ if (isset($_POST['update'])) {
     $sql->bindParam(":fullname", $fullname);
     $sql->bindParam(":phone", $phone);
     $sql->bindParam(":subject_group", $subject_group);
-<<<<<<< HEAD
     $sql->bindParam(":photo", $fileNew);
     $sql->bindParam(":t_id", $t_id);
-=======
     $sql->bindParam(":photo", $fileNew); // ใช้ชื่อไฟล์ใหม่
     $sql->bindParam(":t_id", $t_id); // ผูก ID ของครู
-
     // รันคำสั่ง SQL
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
     $sql->execute();
 
     // ตรวจสอบว่าการดำเนินการสำเร็จหรือไม่
