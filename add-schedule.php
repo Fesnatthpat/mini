@@ -41,6 +41,30 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="box2"> <!-- กล่องย่อยที่บรรจุฟอร์มและเนื้อหา -->
                 <h1 class="text-teacher">ข้อมูลตารางสอน</h1> <!-- หัวข้อของฟอร์ม -->
                 <hr> <!-- เส้นแบ่ง -->
+                <?php if (isset($_SESSION['error'])) { ?> <!-- ตรวจสอบถ้ามีข้อความผิดพลาดในเซสชัน -->
+                    <div class="alert-danger"> <!-- แสดงข้อความผิดพลาด -->
+                        <?php
+                        echo $_SESSION['error']; // แสดงข้อความผิดพลาด
+                        unset($_SESSION['error']); // ลบข้อความผิดพลาดจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['success'])) { ?> <!-- ตรวจสอบถ้ามีข้อความสำเร็จในเซสชัน -->
+                    <div class="alert-success"> <!-- แสดงข้อความสำเร็จ -->
+                        <?php
+                        echo $_SESSION['success']; // แสดงข้อความสำเร็จ
+                        unset($_SESSION['success']); // ลบข้อความสำเร็จจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['warning'])) { ?> <!-- ตรวจสอบถ้ามีข้อความเตือนในเซสชัน -->
+                    <div class="alert-warning"> <!-- แสดงข้อความเตือน -->
+                        <?php
+                        echo $_SESSION['warning']; // แสดงข้อความเตือน
+                        unset($_SESSION['warning']); // ลบข้อความเตือนจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
                 <form action="add-schedule_db.php" method="POST">
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับภาคเรียน -->
                         <label for="semester">ภาคเรียนที่1</label> <!-- ป้ายชื่อสำหรับเมนูเลือกภาคเรียน -->

@@ -79,6 +79,30 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button class="add-student-button" onclick="window.location.href='add-schedule.php'">+ เพิ่มตารางสอน</button>
                     <button class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
                 </div>
+                <?php if (isset($_SESSION['error'])) { ?> <!-- ตรวจสอบถ้ามีข้อความผิดพลาดในเซสชัน -->
+                    <div class="alert-danger"> <!-- แสดงข้อความผิดพลาด -->
+                        <?php
+                        echo $_SESSION['error']; // แสดงข้อความผิดพลาด
+                        unset($_SESSION['error']); // ลบข้อความผิดพลาดจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['success'])) { ?> <!-- ตรวจสอบถ้ามีข้อความสำเร็จในเซสชัน -->
+                    <div class="alert-success"> <!-- แสดงข้อความสำเร็จ -->
+                        <?php
+                        echo $_SESSION['success']; // แสดงข้อความสำเร็จ
+                        unset($_SESSION['success']); // ลบข้อความสำเร็จจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['warning'])) { ?> <!-- ตรวจสอบถ้ามีข้อความเตือนในเซสชัน -->
+                    <div class="alert-warning"> <!-- แสดงข้อความเตือน -->
+                        <?php
+                        echo $_SESSION['warning']; // แสดงข้อความเตือน
+                        unset($_SESSION['warning']); // ลบข้อความเตือนจากเซสชันหลังจากแสดงแล้ว
+                        ?>
+                    </div>
+                <?php } ?>
                 <text class="2">
                     <h2>ตารางสอน ระดับชั้นม.1 ภาคเรียนที่1/2567</h2> <br>
                 </text>
