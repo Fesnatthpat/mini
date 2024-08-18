@@ -16,6 +16,7 @@ $sql = "SELECT s.schedule_id, sj.subject_name, sj.subject_code, sj.subject_id, t
         JOIN subject AS sj ON s.subject_id = sj.subject_id
         JOIN room AS r ON s.room_id = r.room_id
         GROUP BY s.schedule_id, sj.subject_name, sj.subject_id, t.t_id, t.fullname, r.room_id, r.room_no";
+
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +31,7 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลตารางสอน</title>
-    <!-- <link rel="stylesheet" href="data-student.css"> -->
+    <link rel="stylesheet" href="data-student.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 

@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin_login'])) {
                             <button type="submit" name="signupstudent">บันทึกข้อมูล</button> <!-- ปุ่มบันทึกข้อมูล -->
                         </div>
                         <div class="btn-out"> <!-- กล่องสำหรับปุ่มออก -->
-                            <button onclick="window.location.href='data-student.php'">ออก</button> <!-- ปุ่มออกที่เปลี่ยนเส้นทางไปยัง data-student.php -->
+                            <button type="button" onclick="window.location.href='data-student.php'">ออก</button> <!-- ปุ่มออกที่เปลี่ยนเส้นทางไปยัง data-student.php -->
                         </div>
                     </div>
                 </form>

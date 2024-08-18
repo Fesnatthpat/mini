@@ -2,15 +2,13 @@
 session_start();
 require_once 'config/db.php';
 
-try {
+
     $stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
     $stmt->execute();
     $subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
 
-$data = null; // กำหนดค่าเริ่มต้นให้ตัวแปร $data
+
+// $data = null; // กำหนดค่าเริ่มต้นให้ตัวแปร $data
 
 if (isset($_GET['t_id'])) {
     $t_id = $_GET['t_id'];
@@ -72,18 +70,18 @@ if (isset($_GET['t_id'])) {
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" value="<?= htmlspecialchars($data['username']); ?>" id="username" name="username">
+                        <input type="text" value="<?= htmlspecialchars($data['username']); ?>" name="username">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" value="<?= htmlspecialchars($data['password']); ?>" id="password" name="password">
+                        <input type="password" value="<?= htmlspecialchars($data['password']); ?>" name="password">
                     </div>
                     <div class="btn-con">
                         <div class="btn-submit">
                             <button type="submit" name="update">บันทึกข้อมูล</button>
                         </div>
                         <div class="btn-out">
-                            <button type="button" onclick="history.back()">ออก</button>
+                            <button type="button" onclick="window.location.href='teacher.php'">ออก</button>
                         </div>
                     </div>
                 </form>

@@ -30,14 +30,6 @@ require_once 'config/db.php';
                                 ?>
                             </div>
                         <?php } ?>
-                        <?php if (isset($_SESSION['success'])) { ?>
-                            <div class="alert-success" role="alert">
-                                <?php
-                                echo $_SESSION['success'];
-                                unset($_SESSION['success']);
-                                ?>
-                            </div>
-                        <?php } ?>
                         <h1 class="text-login">Log In</h1>
                         <div class="input-1">
                             <input type="text" name="username" placeholder="Username" />

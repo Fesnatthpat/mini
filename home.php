@@ -56,8 +56,6 @@ if (!isset($_SESSION['admin_login'])) {
                                 echo "<h3>" . htmlspecialchars($adminData['fullname']) . "</h3>";
                                 echo "<h3>" . htmlspecialchars($adminData['t_code']) . "</h3>";
                                 echo "<h3>" . htmlspecialchars($adminData['urole']) . "</h3>";
-                            } else {
-                                echo "<h3>ไม่พบข้อมูล</h3>";
                             }
                         } catch (PDOException $e) {
                             echo "Error: " . $e->getMessage();

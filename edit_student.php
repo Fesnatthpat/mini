@@ -74,7 +74,7 @@ if (isset($_GET['s_id'])) {
                             <button type="submit" name="update">บันทึกข้อมูล</button>
                         </div>
                         <div class="btn-out">
-                        <button type="button" onclick="history.back()">ออก</button>
+                            <button type="button" class="out-student-button" onclick="window.location.href='data-student.php'">ออก</button>
                         </div>
                     </div>
                 </form>

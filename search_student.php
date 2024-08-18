@@ -9,24 +9,29 @@ if (!isset($_SESSION['admin_login'])) {
     exit();
 }
 
-// ดึงข้อมูลกลุ่มวิชาทั้งหมด
-$stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
-$stmt->execute();
-$subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
 // ตรวจสอบค่าการค้นหาและสร้างคำสั่ง SQL
 $searchName = isset($_POST['search_name']) ? '%' . $_POST['search_name'] . '%' : '%';
 $searchLevel = $_POST['search_level'] ?? '';
-$sql = "SELECT * FROM teacher WHERE fullname LIKE :searchName" . (!empty($searchLevel) ? " AND subject_group = :searchLevel" : '');
+
+$sql = "SELECT * FROM student WHERE fullname LIKE :searchName";
+
+if (!empty($searchLevel)) {
+    $sql .= " AND level = :searchLevel";
+}
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':searchName', $searchName, PDO::PARAM_STR);
-if (!empty($searchLevel)) $stmt->bindParam(':searchLevel', $searchLevel, PDO::PARAM_STR);
+
+if (!empty($searchLevel)) {
+    $stmt->bindParam(':searchLevel', $searchLevel, PDO::PARAM_STR);
+}
 
 $stmt->execute();
-$teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$studentData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="th">
@@ -34,8 +39,8 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ข้อมูลคุณครู</title>
-    <link rel="stylesheet" href="teacher.css">
+    <title>ข้อมูลนักเรียน</title>
+    <link rel="stylesheet" href="data-student.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" />
 </head>
 
@@ -45,22 +50,20 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="box-1">
             <div class="box-2">
                 <div class="text-1">
-                    <h1>ข้อมูลคุณครู</h1>
+                    <h1>ข้อมูลนักเรียน</h1>
                 </div>
-                <form class="search-form" method="POST" action="search_teacher.php">
+                <form action="search_student.php" method="POST" class="search-form">
                     <div class="form-group">
                         <label for="search_name">ชื่อ-นามสกุล</label>
                         <input type="text" name="search_name">
                     </div>
                     <div class="form-group">
-                        <label for="search_level">กลุ่มวิชาที่สอน</label>
+                        <label for="search_level">ระดับชั้น</label>
                         <select name="search_level">
-                            <option value="">เลือกกลุ่มวิชา</option>
-                            <?php foreach ($subjectGroups as $group): ?>
-                                <option value="<?= htmlspecialchars($group['subj_group_name']); ?>">
-                                    <?= htmlspecialchars($group['subj_group_name']); ?>
-                                </option>
-                            <?php endforeach; ?>
+                            <option value="">เลือกระดับชั้น</option>
+                            <option value="ม.1">ม.1</option>
+                            <option value="ม.2">ม.2</option>
+                            <option value="ม.3">ม.3</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -69,7 +72,8 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </form>
 
                 <div class="btn-con">
-                    <button class="out-student-button" onclick="window.location.href='teacher.php'">ออก</button>
+                    <button class="add-student-button" onclick="window.location.href='add-student.php'">+ เพิ่มนักเรียน</button>
+                    <button class="out-student-button" onclick="window.location.href='data-student.php'">ออก</button>
                 </div>
 
                 <div class="group-form1">
@@ -81,7 +85,7 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <th>ชื่อ-นามสกุล</th>
                                     <th>รูปถ่าย</th>
                                     <th>เบอร์โทร</th>
-                                    <th>กลุ่มวิชาที่สอน</th>
+                                    <th>ระดับชั้น</th>
                                     <th>การจัดการ</th>
                                 </tr>
                             </thead>
@@ -98,21 +102,21 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="alert-warning"><?= $_SESSION['warning'];
                                                                 unset($_SESSION['warning']); ?></div>
                                 <?php endif; ?>
-                                <?php if (!$teacherData): ?>
+                                <?php if (!$studentData): ?>
                                     <tr>
                                         <td colspan="6">ไม่มีข้อมูล</td>
                                     </tr>
                                 <?php else: ?>
-                                    <?php foreach ($teacherData as $teacher): ?>
+                                    <?php foreach ($studentData as $student): ?>
                                         <tr>
-                                            <td><?= htmlspecialchars($teacher['t_code']); ?></td>
-                                            <td><?= htmlspecialchars($teacher['fullname']); ?></td>
-                                            <td><img width="40px" src="uploads/<?= htmlspecialchars($teacher['photo']); ?>" alt="รูปถ่าย"></td>
-                                            <td><?= htmlspecialchars($teacher['phone']); ?></td>
-                                            <td><?= htmlspecialchars($teacher['subject_group']); ?></td>
+                                            <td><?= htmlspecialchars($student['s_code']); ?></td>
+                                            <td><?= htmlspecialchars($student['fullname']); ?></td>
+                                            <td><img src="uploads_student/<?= htmlspecialchars($student['photo']); ?>" alt="รูปถ่าย" width="40px"></td>
+                                            <td><?= htmlspecialchars($student['phone']); ?></td>
+                                            <td><?= htmlspecialchars($student['level']); ?></td>
                                             <td>
-                                                <a href="edit_teacher.php?t_id=<?= htmlspecialchars($teacher['t_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
-                                                <a href="delete_tracher_db.php?delete=<?= htmlspecialchars($teacher['t_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
+                                                <a href="edit_student.php?s_id=<?= htmlspecialchars($student['s_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
+                                                <a href="delete_student_db.php?delete=<?= htmlspecialchars($student['s_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -123,6 +127,7 @@ $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
+
     </div>
 
 </body>

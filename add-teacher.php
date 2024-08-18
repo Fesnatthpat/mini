@@ -3,21 +3,15 @@
 session_start();
 require_once 'config/db.php';
 
-try {
-    $stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
-    $stmt->execute();
-    $subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
 if (!isset($_SESSION['admin_login'])) {
     $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
     header("location: index.php");
     exit();
 }
 
-
+    $stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
+    $stmt->execute();
+    $subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -69,11 +63,11 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                     <div class="form-group">
                         <label for="fullname">ชื่อ-นามสกุล</label>
-                        <input type="text" id="fullname" name="fullname">
+                        <input type="text" name="fullname">
                     </div>
                     <div class="form-group">
                         <label for="phone">เบอร์โทร</label>
-                        <input type="text" id="phone" name="phone">
+                        <input type="text" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="subject_group">กลุ่มวิชาที่สอน</label>
@@ -96,7 +90,7 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password">
+                        <input type="password" name="password">
                     </div>
                     <div class="btn-con">
                         <div class="btn-submit">

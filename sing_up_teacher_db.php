@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config/db.php';
+require_once 'config/db.php';
 
 if (isset($_POST['signupteacher'])) {
     $t_code = $_POST['t_code'];
@@ -78,7 +78,7 @@ if (isset($_POST['signupteacher'])) {
                             $stmt->bindParam(":urole", $urole);
                             $stmt->execute();
                             $_SESSION['success'] = 'สมัครเรียบร้อยแล้ว';
-                            header("location: add-teacher.php");
+                            header("location: teacher.php");
                             exit();
                         } else {
                             $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว';

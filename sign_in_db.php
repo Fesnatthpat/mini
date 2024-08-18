@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config/db.php';
+require_once 'config/db.php';
 
 if (isset($_POST['signin'])) {
     $username = trim($_POST['username']);
@@ -16,7 +16,8 @@ if (isset($_POST['signin'])) {
         exit();
     } else {
         try {
-            $chk_data = $pdo->prepare("SELECT * FROM teacher WHERE username = :username");
+            $chk_data = $pdo->prepare("SELECT * FROM teacher 
+            WHERE username = :username");
             $chk_data->bindParam(":username", $username);
             $chk_data->execute();
             $row = $chk_data->fetch(PDO::FETCH_ASSOC);

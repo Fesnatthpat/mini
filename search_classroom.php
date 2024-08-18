@@ -9,9 +9,38 @@ if (!isset($_SESSION['admin_login'])) {
 }
 
 // ดึงข้อมูลอาคารจากฐานข้อมูล
-$stmt = $pdo->prepare("SELECT * FROM building");
+$stmt = $pdo->prepare("SELECT DISTINCT building_name FROM building");
 $stmt->execute();
 $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// ตรวจสอบค่าการค้นหาและสร้างคำสั่ง SQL
+$searchroomno = isset($_POST['searchroom_no']) ? '%' . $_POST['searchroom_no'] . '%' : '%';
+$searchbuilding = $_POST['search_building'] ?? '';
+$searchfloot = $_POST['search_floot'] ?? '';
+
+$sql = "SELECT * FROM room WHERE room_no LIKE :searchroom_no";
+
+if (!empty($searchbuilding)) {
+    $sql .= " AND building = :searchbuilding";
+}
+
+if (!empty($searchfloot)) {
+    $sql .= " AND floot = :search_floot";
+}
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':searchroom_no', $searchroomno, PDO::PARAM_STR);
+
+if (!empty($searchbuilding)) {
+    $stmt->bindParam(':search_building', $searchbuilding, PDO::PARAM_STR);
+}
+
+if (!empty($searchfloot)) {
+    $stmt->bindParam(':search_floot', $searchfloot, PDO::PARAM_INT);  // ใช้ PARAM_STR ถ้าคอลัมน์เป็นชนิด VARCHAR
+}
+
+$stmt->execute();
+$roomData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -37,12 +66,12 @@ $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <form action="search_classroom.php" method="POST" class="search-form">
                     <div class="form-group">
-                        <label for="searchroom_no">หมายเลขห้อง</label>
+                        <label for="search-name">หมายเลขห้อง</label>
                         <input type="text" name="searchroom_no">
                     </div>
                     <div class="form-group">
-                        <label for="search_building">อาคาร</label>
-                        <select name="search_building">
+                        <label for="search-level">อาคาร</label>
+                        <select id="building" name="search_building">
                             <option value="">เลือกอาคาร</option>
                             <?php foreach ($buildingData as $building) { ?>
                                 <option value="<?php echo htmlspecialchars($building['building_name']); ?>">
@@ -52,7 +81,7 @@ $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search_floot">ชั้น</label>
+                        <label for="search-level">ชั้น</label>
                         <select name="search_floot">
                             <option value="">เลือกชั้น</option>
                             <option value="1">1</option>
@@ -66,8 +95,8 @@ $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </form>
 
                 <div class="btn-con">
-                    <button type="button" class="add-student-button" onclick="window.location.href='add-classroom.php'">+ เพิ่มห้องเรียน</button>
-                    <button type="button" class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
+                    <button class="add-student-button" onclick="window.location.href='add-classroom.php'">+ เพิ่มห้องเรียน</button>
+                    <button class="out-student-button" onclick="window.location.href='data-classroom.php'">ออก</button>
                 </div>
                 <?php if (isset($_SESSION['error'])) { ?>
                     <div class="alert-danger">
@@ -121,7 +150,7 @@ $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                         <tr>
                                             <td><?= $rooms['room_no'] ?></td>
-                                            <td><img width="40px" src="uploads_classroom/<?= $rooms['photo'] ?>" alt="รูปถ่าย"></td>
+                                            <td><img src="uploads_classroom/<?= $rooms['photo'] ?>" alt="รูปถ่าย"></td>
                                             <td><?= $rooms['building'] ?></td>
                                             <td><?= $rooms['floot'] ?></td>
                                             <td>

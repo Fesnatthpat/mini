@@ -9,19 +9,15 @@ if (!isset($_SESSION['admin_login'])) {
     exit();
 }
 
-try {
-    // ดึงข้อมูลกลุ่มวิชาทั้งหมด
-    $stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
-    $stmt->execute();
-    $subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// ดึงข้อมูลกลุ่มวิชาทั้งหมด
+$stmt = $pdo->prepare("SELECT subj_group_name FROM subject_group");
+$stmt->execute();
+$subjectGroups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // ดึงข้อมูลคุณครูทั้งหมด
-    $stmt = $pdo->prepare("SELECT * FROM teacher");
-    $stmt->execute();
-    $teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+// ดึงข้อมูลคุณครูทั้งหมด
+$stmt = $pdo->prepare("SELECT * FROM teacher");
+$stmt->execute();
+$teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +42,7 @@ try {
                 <form class="search-form" method="POST" action="search_teacher.php">
                     <div class="form-group">
                         <label for="search_name">ชื่อ-นามสกุล</label>
-                        <input type="text" name="search_name" required >
+                        <input type="text" name="search_name">
                     </div>
                     <div class="form-group">
                         <label for="search_level">กลุ่มวิชาที่สอน</label>

@@ -31,24 +31,24 @@ if (!isset($_SESSION['admin_login'])) {
                 <div class="text-1">
                     <h1>ข้อมูลนักเรียน</h1>
                 </div>
-                <div class="search-form">
+                <form action="search_student.php" method="POST" class="search-form">
                     <div class="form-group">
-                        <label for="search-name">ชื่อ-นามสกุล</label>
-                        <input type="text" id="search-name" name="search-name">
+                        <label for="search_name">ชื่อ-นามสกุล</label>
+                        <input type="text" name="search_name">
                     </div>
                     <div class="form-group">
-                        <label for="search-level">ระดับชั้น</label>
-                        <select id="search-level" name="search-level">
+                        <label for="search_level">ระดับชั้น</label>
+                        <select name="search_level">
                             <option value="">เลือกระดับชั้น</option>
-                            <option value="1">ม.1</option>
-                            <option value="2">ม.2</option>
-                            <option value="3">ม.3</option>
+                            <option value="ม.1">ม.1</option>
+                            <option value="ม.2">ม.2</option>
+                            <option value="ม.3">ม.3</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <button type="button">ค้นหา <i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button type="submit">ค้นหา <i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                </div>
+                </form>
 
                 <div class="btn-con">
                     <button class="add-student-button" onclick="window.location.href='add-student.php'">+ เพิ่มนักเรียน</button>

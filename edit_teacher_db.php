@@ -10,8 +10,8 @@ if (isset($_POST['update'])) {
     $subject_group = $_POST['subject_group'];
     $photo = $_FILES['photo'];
 
-    $photo2 = $_POST['photo2'];
-    $upload = $_FILES['photo']['name'];
+    $photo2 = $_POST['photo2']; //รูปเดิม
+    $upload = $_FILES['photo']['name']; //รูปภาพใหม่
 
     if ($upload != '') {
         $allow = array('jpg', 'jpeg', 'png');
@@ -34,7 +34,7 @@ if (isset($_POST['update'])) {
     $sql->bindParam(":phone", $phone);
     $sql->bindParam(":subject_group", $subject_group);
     $sql->bindParam(":photo", $fileNew);
-    $sql->bindParam(":t_id", $t_id); // Add this line to bind t_id
+    $sql->bindParam(":t_id", $t_id);
     $sql->execute();
 
     if ($sql) {
