@@ -1,13 +1,10 @@
 <?php
 // เริ่มต้นเซสชันเพื่อใช้ตัวแปรเซสชัน
 session_start();
-<<<<<<< HEAD
 require_once 'config/db.php';
-=======
 
 // รวมไฟล์ที่มีการตั้งค่าการเชื่อมต่อฐานข้อมูล
 require 'config/db.php';
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
 
 // ตรวจสอบว่าปุ่ม 'signupteacher' ถูกกดในแบบฟอร์มหรือไม่
 if (isset($_POST['signupteacher'])) {
@@ -85,20 +82,6 @@ if (isset($_POST['signupteacher'])) {
                             // เตรียมและรันคำสั่ง SQL เพื่อนำข้อมูลไปบันทึกในฐานข้อมูล
                             $stmt = $pdo->prepare("INSERT INTO teacher(t_code, fullname, phone, subject_group, photo, username, password, urole)
                                         VALUES(:t_code, :fullname, :phone, :subject_group, :photo, :username, :password, :urole)");
-<<<<<<< HEAD
-                            $stmt->bindParam(":t_code", $t_code);
-                            $stmt->bindParam(":fullname", $fullname);
-                            $stmt->bindParam(":phone", $phone);
-                            $stmt->bindParam(":subject_group", $subject_group);
-                            $stmt->bindParam(":photo", $fileNew);
-                            $stmt->bindParam(":username", $username);
-                            $stmt->bindParam(":password", $passwordHash);
-                            $stmt->bindParam(":urole", $urole);
-                            $stmt->execute();
-                            $_SESSION['success'] = 'สมัครเรียบร้อยแล้ว';
-                            header("location: teacher.php");
-                            exit();
-=======
                             $stmt->bindParam(":t_code", $t_code); // ผูกค่ารหัสประจำตัว
                             $stmt->bindParam(":fullname", $fullname); // ผูกค่าชื่อเต็ม
                             $stmt->bindParam(":phone", $phone); // ผูกค่าเบอร์โทรศัพท์
@@ -111,7 +94,6 @@ if (isset($_POST['signupteacher'])) {
                             $_SESSION['success'] = 'สมัครเรียบร้อยแล้ว'; // เก็บข้อความสำเร็จในเซสชัน
                             header("location: add-teacher.php"); // เปลี่ยนเส้นทางกลับไปยังหน้าเพิ่มครู
                             exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
                         } else {
                             $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว'; // เก็บข้อความแสดงข้อผิดพลาดในเซสชัน
                             header("location: add-teacher.php"); // เปลี่ยนเส้นทางกลับไปยังหน้าเพิ่มครู

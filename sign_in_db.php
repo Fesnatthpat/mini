@@ -1,13 +1,10 @@
 <?php
 // เริ่มต้นเซสชันเพื่อใช้ตัวแปรเซสชัน
 session_start();
-<<<<<<< HEAD
 require_once 'config/db.php';
-=======
-
 // รวมไฟล์ที่มีการตั้งค่าการเชื่อมต่อฐานข้อมูล
 require 'config/db.php';
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
+
 
 // ตรวจสอบว่าปุ่ม 'signin' ถูกกดในแบบฟอร์มหรือไม่
 if (isset($_POST['signin'])) {
@@ -27,19 +24,17 @@ if (isset($_POST['signin'])) {
         exit(); // ออกจากสคริปต์
     } else {
         try {
-<<<<<<< HEAD
             $chk_data = $pdo->prepare("SELECT * FROM teacher 
             WHERE username = :username");
             $chk_data->bindParam(":username", $username);
             $chk_data->execute();
             $row = $chk_data->fetch(PDO::FETCH_ASSOC);
-=======
             // เตรียมคำสั่ง SQL เพื่อตรวจสอบข้อมูลผู้ใช้
             $chk_data = $pdo->prepare("SELECT * FROM teacher WHERE username = :username");
             $chk_data->bindParam(":username", $username); // ผูกค่าชื่อผู้ใช้
             $chk_data->execute(); // รันคำสั่ง SQL
             $row = $chk_data->fetch(PDO::FETCH_ASSOC); // ดึงข้อมูลผู้ใช้
->>>>>>> b16e91a90d2b86c224476a1822247aa3fb2cffcd
+
 
             // ตรวจสอบว่ามีข้อมูลผู้ใช้ในฐานข้อมูลหรือไม่
             if ($row) {
