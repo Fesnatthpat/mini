@@ -1,3 +1,29 @@
+<?php
+session_start();
+require_once 'config/db.php';
+
+// ตรวจสอบว่าเป็นผู้ดูแลระบบหรือไม่
+if (!isset($_SESSION['admin_login'])) {
+    $_SESSION['error'] = 'คุณไม่มีสิทธิ์เข้าถึงหน้านี้';
+    header("location: index.php");
+    exit();
+}
+
+// ดึงข้อมูลกลุ่มวิชาทั้งหมด
+$stmt = $pdo->prepare("SELECT subject_name, subject_id FROM subject");
+$stmt->execute();
+$subject = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// ดึงข้อมูลคุณครูทั้งหมด
+$stmt = $pdo->prepare("SELECT fullname, t_id FROM teacher");
+$stmt->execute();
+$teacherData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare("SELECT room_no, room_id FROM room");
+$stmt->execute();
+$roomData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html> <!-- ประกาศว่าเอกสารนี้เป็น HTML5 -->
 <html lang="th"> <!-- กำหนดภาษาเป็นภาษาไทย -->
 
@@ -15,18 +41,18 @@
             <div class="box2"> <!-- กล่องย่อยที่บรรจุฟอร์มและเนื้อหา -->
                 <h1 class="text-teacher">ข้อมูลตารางสอน</h1> <!-- หัวข้อของฟอร์ม -->
                 <hr> <!-- เส้นแบ่ง -->
-                <div>
+                <form action="add-schedule_db.php" method="POST">
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับภาคเรียน -->
-                        <label for="name">ภาคเรียนที่1</label> <!-- ป้ายชื่อสำหรับเมนูเลือกภาคเรียน -->
-                        <select id="level" name="level"> <!-- เมนูเลือกภาคเรียน -->
+                        <label for="semester">ภาคเรียนที่1</label> <!-- ป้ายชื่อสำหรับเมนูเลือกภาคเรียน -->
+                        <select id="level" name="semester"> <!-- เมนูเลือกภาคเรียน -->
                             <option value="">เลือกภาคเรียน</option> <!-- ตัวเลือกเริ่มต้น -->
                             <option value="1">1</option> <!-- ตัวเลือกภาคเรียนที่ 1 -->
                             <option value="2">2</option> <!-- ตัวเลือกภาคเรียนที่ 2 -->
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับปีการศึกษา -->
-                        <label for="level">ปีการศึกษา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกปีการศึกษา -->
-                        <select id="level" name="level"> <!-- เมนูเลือกปีการศึกษา -->
+                        <label for="academic_year">ปีการศึกษา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกปีการศึกษา -->
+                        <select id="level" name="academic_year"> <!-- เมนูเลือกปีการศึกษา -->
                             <option value="">เลือกปีการศึกษา</option> <!-- ตัวเลือกเริ่มต้น -->
                             <option value="2567">2567</option> <!-- ตัวเลือกปีการศึกษา 2567 -->
                             <option value="2566">2566</option> <!-- ตัวเลือกปีการศึกษา 2566 -->
@@ -34,66 +60,71 @@
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับวิชา -->
-                        <label for="name">วิชา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวิชา -->
-                        <select id="level" name="level"> <!-- เมนูเลือกวิชา -->
+                        <label for="subject_id">วิชา</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวิชา -->
+                        <select id="level" name="subject_id"> <!-- เมนูเลือกวิชา -->
                             <option value="">เลือกวิชา</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="">ภาษา</option> <!-- ตัวเลือกวิชา ภาษา -->
-                            <option value="">คณิตศาสตร์</option> <!-- ตัวเลือกวิชา คณิตศาสตร์ -->
-                            <option value="">วิทยาศาสตร์</option> <!-- ตัวเลือกวิชา วิทยาศาสตร์ -->
-                            <option value="">สังคมศาสตร์</option> <!-- ตัวเลือกวิชา สังคมศาสตร์ -->
+                            <?php foreach ($subject as $subjects) { ?>
+                                <option value="<?php echo htmlspecialchars($subjects['subject_id']); ?>">
+                                    <?php echo htmlspecialchars($subjects['subject_name']); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับระดับชั้น -->
                         <label for="name">ระดับชั้น</label> <!-- ป้ายชื่อสำหรับเมนูเลือกระดับชั้น -->
                         <select id="level" name="level"> <!-- เมนูเลือกระดับชั้น -->
                             <option value="">เลือกระดับชั้น</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="1">ม.1</option> <!-- ตัวเลือกระดับชั้น ม.1 -->
-                            <option value="2">ม.2</option> <!-- ตัวเลือกระดับชั้น ม.2 -->
-                            <option value="3">ม.3</option> <!-- ตัวเลือกระดับชั้น ม.3 -->
+                            <option value="ม.1">ม.1</option> <!-- ตัวเลือกระดับชั้น ม.1 -->
+                            <option value="ม.2">ม.2</option> <!-- ตัวเลือกระดับชั้น ม.2 -->
+                            <option value="ม.3">ม.3</option> <!-- ตัวเลือกระดับชั้น ม.3 -->
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับครูผู้สอน -->
-                        <label for="name">ครูผู้สอน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกครูผู้สอน -->
-                        <select id="level" name="level"> <!-- เมนูเลือกครูผู้สอน -->
-                            <option value="">เลือกครูผู้สอน</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="">ครูเต้ย</option> <!-- ตัวเลือกครูผู้สอน ครูเต้ย -->
-                            <option value="">ครูแบม</option> <!-- ตัวเลือกครูผู้สอน ครูแบม -->
-                            <option value="">ครูวิว</option> <!-- ตัวเลือกครูผู้สอน ครูวิว -->
+                        <label for="t_id">ครูผู้สอน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกครูผู้สอน -->
+                        <select id="level" name="t_id"> <!-- เมนูเลือกครูผู้สอน -->
+                            <option value="">เลือกระดับชั้น</option>
+                            <?php foreach ($teacherData as $teachers) { ?>
+                                <option value="<?php echo htmlspecialchars($teachers['t_id']); ?>">
+                                    <?php echo htmlspecialchars($teachers['fullname']); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับห้องเรียน -->
-                        <label for="name">ห้องเรียน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกห้องเรียน -->
-                        <select id="level" name="level"> <!-- เมนูเลือกห้องเรียน -->
+                        <label for="room_id">ห้องเรียน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกห้องเรียน -->
+                        <select id="level" name="room_id"> <!-- เมนูเลือกห้องเรียน -->
                             <option value="">เลือกห้องเรียน</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="">A001</option> <!-- ตัวเลือกห้องเรียน A001 -->
-                            <option value="">B002</option> <!-- ตัวเลือกห้องเรียน B002 -->
-                            <option value="">C003</option> <!-- ตัวเลือกห้องเรียน C003 -->
+                            <?php foreach ($roomData as $rooms) { ?>
+                                <option value="<?php echo htmlspecialchars($rooms['room_id']); ?>">
+                                    <?php echo htmlspecialchars($rooms['room_no']); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับวัน -->
-                        <label for="name">วัน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวัน -->
-                        <select id="level" name="level"> <!-- เมนูเลือกวัน -->
+                        <label for="teacher_date">วัน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวัน -->
+                        <select id="level" name="teacher_date"> <!-- เมนูเลือกวัน -->
                             <option value="">เลือกวัน</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="">วันจันทร์</option> <!-- ตัวเลือกวันจันทร์ -->
-                            <option value="">วันอังคาร</option> <!-- ตัวเลือกวันอังคาร -->
-                            <option value="">วันพุธ</option> <!-- ตัวเลือกวันพุธ -->
-                            <option value="">วันพฤหัสบดี</option> <!-- ตัวเลือกวันพฤหัสบดี -->
-                            <option value="">วันศุกร์</option> <!-- ตัวเลือกวันศุกร์ -->
+                            <option value="วันจันทร์">วันจันทร์</option> <!-- ตัวเลือกวันจันทร์ -->
+                            <option value="วันอังคาร">วันอังคาร</option> <!-- ตัวเลือกวันอังคาร -->
+                            <option value="วันพุธ">วันพุธ</option> <!-- ตัวเลือกวันพุธ -->
+                            <option value="วันพฤหัสบดี">วันพฤหัสบดี</option> <!-- ตัวเลือกวันพฤหัสบดี -->
+                            <option value="วันศุกร์">วันศุกร์</option> <!-- ตัวเลือกวันศุกร์ -->
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับเวลา -->
-                        <label for="search-name">เวลา</label> <!-- ป้ายชื่อสำหรับช่องกรอกเวลา -->
-                        <input type="text" id="search-name" name="search-name"> <!-- ช่องกรอกข้อมูลเวลา -->
+                        <label for="teacher_time">เวลา</label> <!-- ป้ายชื่อสำหรับช่องกรอกเวลา -->
+                        <input type="text" id="search-name" name="teacher_time"> <!-- ช่องกรอกข้อมูลเวลา -->
                     </div>
                     <div class="btn-con"> <!-- กลุ่มปุ่มสำหรับบันทึกข้อมูลและออก -->
                         <div class="btn-submit"> <!-- กล่องปุ่มบันทึกข้อมูล -->
-                            <button type="submit">บันทึกข้อมูล</button> <!-- ปุ่มสำหรับบันทึกข้อมูล -->
+                            <button type="submit" name="add_schedule">บันทึกข้อมูล</button> <!-- ปุ่มสำหรับบันทึกข้อมูล -->
                         </div>
                         <div class="btn-out"> <!-- กล่องปุ่มออก -->
-                            <button onclick="window.location.href='Tutorial-Schedule.php'">ออก</button> <!-- ปุ่มสำหรับออกจากฟอร์มและไปยังหน้า Tutorial-Schedule.php -->
+                            <button type="button" onclick="window.location.href='Tutorial-Schedule.php'">ออก</button> <!-- ปุ่มสำหรับออกจากฟอร์มและไปยังหน้า Tutorial-Schedule.php -->
                         </div>
                     </div>
-                </div>
+                    </fด>
             </div>
         </div>
     </div>

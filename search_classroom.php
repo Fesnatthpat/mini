@@ -17,7 +17,6 @@ $buildingData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $searchroomno = isset($_POST['searchroom_no']) ? '%' . $_POST['searchroom_no'] . '%' : '%';
 $searchbuilding = $_POST['search_building'] ?? '';
 $searchfloot = $_POST['search_floot'] ?? '';
-
 $sql = "SELECT * FROM room WHERE room_no LIKE :searchroom_no";
 
 if (!empty($searchbuilding)) {
