@@ -65,7 +65,6 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                 <?php } ?>
                 <div class="btn-con">
-                    <!-- <button class="add-student-button" onclick="window.location.href='add-subject_group.php'">+ กลุ่มวิชา</button> -->
                     <button class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
                 </div>
 
@@ -83,7 +82,6 @@ if (!isset($_SESSION['admin_login'])) {
                                     <tr>
                                         <td><?php echo htmlspecialchars($subject['subj_group_name']); ?></td>
                                         <td>
-                                            <a href="edit_subject_group.php?subj_group_id=<?= htmlspecialchars($subject['subj_group_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
                                             <a href="delete_subject_group_db.php?delete=<?= htmlspecialchars($subject['subj_group_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>

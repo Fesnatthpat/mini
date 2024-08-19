@@ -83,7 +83,6 @@ if (!isset($_SESSION['admin_login'])) {
                                         <td><?php echo htmlspecialchars($building['building_name']); // ใช้ building_name 
                                             ?></td>
                                         <td>
-                                            <a href="edit_building.php?building_id=<?= htmlspecialchars($building['building_id']); ?>"><i class="fa-solid fa-pen"></i></a> |
                                             <a href="delete_building_db.php?delete=<?= htmlspecialchars($building['building_id']); ?>" onclick="return confirm('คุณแน่ใจหรือว่าต้องการลบ?');"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
