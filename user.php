@@ -33,11 +33,13 @@ if (!isset($_SESSION['user_login'])) {
                             $user_login = $_SESSION['user_login'];
                         }
 
+                        // ดึงข้อมูลผู้ใช้จากฐานข้อมูล
                         try {
-                            $stmt = $pdo->prepare("SELECT * FROM teacher WHERE t_id = ?");
+                            $stmt = $pdo->prepare("SELECT * FROM teacher WHERE t_id = ?"); //ใช้ PDO เพื่อเตรียมคำสั่ง SQL สำหรับการดึงข้อมูลของผู้ใช้จากตาราง teacher โดยใช้ t_id ที่ตรงกับ $user_login
                             $stmt->execute([$user_login]);
-                            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $userData = $stmt->fetch(PDO::FETCH_ASSOC); //fetch(PDO::FETCH_ASSOC) จะดึงข้อมูลเป็นรูปแบบอาร์เรย์
 
+                            //แสดงข้อมูลผู้ใช้
                             if ($userData) {
                                 $photo = !empty($userData['photo']) ? 'uploads/' . htmlspecialchars($userData['photo']) : 'default.png'; // กำหนด default รูปภาพ
                                 echo "<img src=\"$photo\" alt=\"Profile Picture\">";
@@ -47,6 +49,7 @@ if (!isset($_SESSION['user_login'])) {
                             } else {
                                 echo "<h3>ไม่พบข้อมูล</h3>";
                             }
+                        //จัดการข้อผิดพลาด
                         } catch (PDOException $e) {
                             echo "Error: " . $e->getMessage();
                         }

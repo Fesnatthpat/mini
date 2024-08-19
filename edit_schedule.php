@@ -17,7 +17,7 @@
                 <hr>
                 <div>
                     <div class="form-group">
-                        <label for="name">ภาคเรียนที่1</label>
+                        <label for="name">ภาคเรียนที่1</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกภาคเรียน</option>
                             <option value="1">1</option>
@@ -25,7 +25,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="level">ปีการศึกษา</label>
+                        <label for="level">ปีการศึกษา</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกปีการศึกษา</option>
                             <option value="2567">2567</option>
@@ -34,7 +34,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">วิชา</label>
+                        <label for="name">วิชา</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกวิชา</option>
                             <option value="">ภาษา</option>
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ระดับชั้น</label>
+                        <label for="name">ระดับชั้น</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกภาคเรียน</option>
                             <option value="2567">2567</option>
@@ -52,7 +52,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ครูผู้สอน</label>
+                        <label for="name">ครูผู้สอน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกครูผู้สอน</option>
                             <option value="">ครูเต้ย</option>
@@ -61,7 +61,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">ห้องเรียน</label>
+                        <label for="name">ห้องเรียน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกห้องเรียน</option>
                             <option value="">A001</option>
@@ -70,7 +70,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">วัน</label>
+                        <label for="name">วัน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกวัน</option>
                             <option value="">วันจันทร์</option>
@@ -81,7 +81,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search-name">เวลา</label>
+                        <label for="search-name">เวลา</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" id="search-name" name="search-name">
                     </div>
                     <div class="btn-con">

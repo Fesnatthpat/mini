@@ -44,12 +44,12 @@ if (isset($_GET['room_id'])) {
                 <form action="edit_classroom_db.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="hidden" value="<?= htmlspecialchars($data['room_id']); ?>" name="room_id">
-                        <label for="room_no">หมายเลขห้อง</label>
+                        <label for="room_no">หมายเลขห้อง</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" value="<?= htmlspecialchars($data['room_no']); ?>" name="room_no">
                         <input type="hidden" value="<?= htmlspecialchars($data['photo']); ?>" name="photo2">
                     </div>
                     <div class="form-group">
-                        <label for="building">อาคารเรียน</label>
+                        <label for="building">อาคารเรียน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select name="building">
                             <option><?= htmlspecialchars($data['building']); ?></option>
 
@@ -61,7 +61,7 @@ if (isset($_GET['room_id'])) {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="floot">ชั้น</label>
+                        <label for="floot">ชั้น</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select name="floot">
                             <option><?= isset($data['floot']) ? htmlspecialchars($data['floot']) : ''; ?></option>
                             <?php foreach ($dataroom as $floot) { ?>
@@ -72,7 +72,7 @@ if (isset($_GET['room_id'])) {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="photo">รูปห้องเรียน</label>
+                        <label for="photo">รูปห้องเรียน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="file" id="imgInput" name="photo">
                         <img id="previewImg" src="uploads_classroom/<?= htmlspecialchars($data['photo']); ?>" alt="">
                     </div>

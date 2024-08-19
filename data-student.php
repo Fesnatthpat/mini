@@ -33,11 +33,11 @@ if (!isset($_SESSION['admin_login'])) {
                 </div>
                 <div class="search-form">
                     <div class="form-group">
-                        <label for="search-name">ชื่อ-นามสกุล</label>
+                        <label for="search-name">ชื่อ-นามสกุล</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" id="search-name" name="search-name">
                     </div>
                     <div class="form-group">
-                        <label for="search-level">ระดับชั้น</label>
+                        <label for="search-level">ระดับชั้น</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="search-level" name="search-level">
                             <option value="">เลือกระดับชั้น</option>
                             <option value="1">ม.1</option>

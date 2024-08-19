@@ -3,10 +3,10 @@ session_start();
 require_once 'config/db.php';
 
 try {
-    $stmt = $pdo->prepare("SELECT * FROM building");
-    $stmt->execute();
-    $buildings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
+    $stmt = $pdo->prepare("SELECT * FROM building"); 
+    $stmt->execute();//ประมวลผลคำสั่ง SQL
+    $buildings = $stmt->fetchAll(PDO::FETCH_ASSOC);//ดึงข้อมูลทั้งหมดจากผลลัพธ์ของคำสั่ง SQL และจัดเก็บในรูปแบบของอาร์เรย์
+} catch (PDOException $e) { //จะจับข้อผิดพลาดที่เกิดขึ้นระหว่างการเชื่อมต่อหรือการทำงานกับฐานข้อมูล
     echo "Error: " . $e->getMessage();
 }
 
@@ -39,7 +39,7 @@ if (!isset($_SESSION['admin_login'])) {
                 </div>
                 <form action="add_building_db.php" method="POST" class="search-form">
                     <div class="form-group">
-                        <label for="name_building">ชื่ออาคารเรียน</label>
+                        <label for="name_building">ชื่ออาคารเรียน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" id="name_building" name="name_building">
                     </div>
 

@@ -44,11 +44,11 @@ try {
                 </div>
                 <div class="search-form">
                     <div class="form-group">
-                        <label for="search-name">หมายเลขห้อง</label>
+                        <label for="search-name">หมายเลขห้อง</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" id="room_no" name="room_no">
                     </div>
                     <div class="form-group">
-                        <label for="search-level">อาคาร</label>
+                        <label for="search-level">อาคาร</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="building" name="building">
                             <option value="">เลือกอาคาร</option>
                             <?php foreach ($buildingData as $building) { ?>
@@ -59,7 +59,7 @@ try {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search-level">ชั้น</label>
+                        <label for="search-level">ชั้น</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="floot" name="floot">
                             <option value="">เลือกชั้น</option>
                             <option value="1">1</option>

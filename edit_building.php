@@ -33,7 +33,7 @@ if (isset($_GET['building_id'])) {
             <hr>
             <form action="edit_building_db.php" method="POST">
                 <div class="form-group">
-                    <label for="building">เลือกอาคารเรียน</label>
+                    <label for="building">เลือกอาคารเรียน</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                     <select >
                         <option><?= htmlspecialchars($data['building_name']); ?></option>
                         <?php foreach ($buildingData as $buildings) { ?>

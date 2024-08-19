@@ -41,7 +41,7 @@ if (!isset($_SESSION['admin_login'])) {
                 </div>
                 <form action="add_subject_group_db.php" method="POST" class="search-form">
                     <div class="form-group">
-                        <label for="search-name">ชื่อวิชา</label>
+                        <label for="search-name">ชื่อวิชา</label> !--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" id="search-name" name="subject_group_name">
                     </div>
                     <div class="form-group">

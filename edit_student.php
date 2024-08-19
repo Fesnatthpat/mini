@@ -35,20 +35,20 @@ if (isset($_GET['s_id'])) {
                 <form action="edit_student_db.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="hidden" value="<?= htmlspecialchars($data['s_id']); ?>" name="s_id">
-                        <label for="s_code">รหัสประจำตัว</label>
+                        <label for="s_code">รหัสประจำตัว</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" value="<?= htmlspecialchars($data['s_code']); ?>" name="s_code">
                         <input type="hidden" value="<?= htmlspecialchars($data['photo']); ?>" name="photo2">
                     </div>
                     <div class="form-group">
-                        <label for="name">ชื่อ-นามสกุล</label>
+                        <label for="name">ชื่อ-นามสกุล</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" value="<?= htmlspecialchars($data['fullname']); ?>" name="fullname">
                     </div>
                     <div class="form-group">
-                        <label for="phone">เบอร์โทร</label>
+                        <label for="phone">เบอร์โทร</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <input type="text" value="<?= htmlspecialchars($data['phone']); ?>" name="phone">
                     </div>
                     <div class="form-group">
-                        <label for="level">ระดับชั้น</label>
+                        <label for="level">ระดับชั้น</label> <!--สร้างป้ายข้อความที่ระบุถึงข้อมูลที่ผู้ใช้ควรกรอกในฟิลด์กรอกข้อมูล-->
                         <select id="level" name="level">
                             <option value="">เลือกระดับชั้น</option>
                             <option value="1">ม.1</option>
