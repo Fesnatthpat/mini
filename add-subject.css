@@ -1,113 +1,174 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าแบบอักษรจาก Google Fonts: Kanit และ Roboto Condensed */
 
 * {
     margin: 0;
+    /* ลบระยะห่างภายนอก (margin) ของทุกองค์ประกอบ */
     padding: 0;
+    /* ลบระยะห่างภายใน (padding) ของทุกองค์ประกอบ */
     box-sizing: border-box;
+    /* รวม border และ padding ในการคำนวณความกว้างและความสูง */
     font-family: "Kanit", sans-serif;
+    /* ตั้งค่าแบบอักษรเป็น Kanit สำหรับทุกองค์ประกอบ */
     font-weight: 300;
+    /* ตั้งค่า font-weight เป็น 300 (light) */
     font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-
-
+    /* ตั้งค่า font-style เป็น normal */
 }
 
+/* .form-container เป็นคลาสสำหรับกล่องที่มีฟอร์ม */
 .form-container {
     max-width: 100vw;
+    /* ความกว้างสูงสุดของกล่องคือ 100% ของความกว้างของหน้าจอ */
     margin: 0 auto;
+    /* จัดตำแหน่งกล่องให้อยู่กลางหน้า */
     background-image: url('bg-img/stacked-steps-haikei.svg');
-    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
+    /* ตั้งภาพพื้นหลังจากไฟล์ SVG */
     background-size: cover;
-    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
+    /* ขยายภาพพื้นหลังให้ครอบคลุมทั้งกล่อง */
     background-position: center;
-    /* จัดภาพให้อยู่ตรงกลาง */
+    /* จัดภาพพื้นหลังให้อยู่ตรงกลาง */
     background-repeat: no-repeat;
-    /* ไม่ทำซ้ำภาพ */
+    /* ห้ามทำซ้ำภาพพื้นหลัง */
 }
 
+/* .box1 เป็นคลาสสำหรับกล่องหลักที่มีการจัดตำแหน่งแบบ flex */
 .box1 {
     /* border: 1px solid red; */
+    /* (คอมเม้นท์) กำหนดขอบสีแดง (ใช้สำหรับการดีบัก) */
     height: 100vh;
+    /* ความสูงของกล่องคือ 100% ของความสูงของหน้าต่าง */
     display: flex;
+    /* ใช้ Flexbox สำหรับการจัดตำแหน่ง */
     justify-content: center;
+    /* จัดศูนย์กลางแนวนอน */
     align-items: center;
+    /* จัดศูนย์กลางแนวตั้ง */
 }
 
+/* .box2 เป็นคลาสสำหรับกล่องย่อยภายใน .box1 */
 .box2 {
     /* border: 1px solid red; */
+    /* (คอมเม้นท์) กำหนดขอบสีแดง (ใช้สำหรับการดีบัก) */
     width: 500px;
+    /* ความกว้างของกล่องคือ 500px */
     padding: 20px;
+    /* การเว้นพื้นที่ภายในกล่องคือ 20px */
     box-shadow: 0px 5px 10px black;
+    /* การสร้างเงาของกล่อง */
     background: #fcfcfc;
+    /* ตั้งค่าพื้นหลังเป็นสีเทาอ่อน */
     border-radius: 8px;
+    /* มุมของกล่องโค้งมน 8px */
 }
 
-
+/* .text-teacher เป็นคลาสสำหรับข้อความที่อยู่ในกล่อง */
 .text-teacher {
     text-align: center;
+    /* จัดตำแหน่งข้อความให้อยู่กลาง */
     font-size: 24px;
+    /* ขนาดฟอนต์คือ 24px */
     margin-bottom: 10px;
+    /* การเว้นระยะด้านล่างของข้อความคือ 10px */
 }
+
+/* .form-group เป็นคลาสสำหรับกลุ่มของฟอร์ม */
 .form-group {
     margin-bottom: 15px;
+    /* การเว้นระยะด้านล่างของกลุ่มฟอร์มคือ 15px */
 }
+
+/* .form-group label เป็นคลาสสำหรับป้ายชื่อในกลุ่มฟอร์ม */
 .form-group label {
     display: block;
+    /* แสดงป้ายชื่อในรูปแบบบล็อก */
     font-weight: bold;
+    /* ตั้งค่า font-weight เป็น bold */
     margin-bottom: 5px;
+    /* การเว้นระยะด้านล่างของป้ายชื่อคือ 5px */
 }
+
+/* .form-group input และ .form-group select เป็นคลาสสำหรับช่องกรอกข้อมูลและรายการเลือก */
 .form-group input,
 .form-group select {
     width: 100%;
+    /* ความกว้างคือ 100% ของกล่องบรรจุ */
     padding: 8px;
+    /* การเว้นพื้นที่ภายในช่องกรอกข้อมูลคือ 8px */
     border: 1px solid #ccc;
+    /* ขอบของช่องกรอกข้อมูลเป็นสีเทาอ่อน */
     border-radius: 3px;
+    /* มุมของช่องกรอกข้อมูลโค้งมน 3px */
     box-sizing: border-box;
+    /* รวม border และ padding ในการคำนวณความกว้างและความสูง */
     outline: none;
+    /* ลบเส้นกรอบที่ปรากฏเมื่อช่องกรอกข้อมูลได้รับการเลือก */
 }
 
-
+/* .btn-con เป็นคลาสสำหรับกลุ่มของปุ่ม */
 .btn-con {
     display: flex;
+    /* ใช้ Flexbox สำหรับการจัดตำแหน่ง */
     justify-content: space-around;
+    /* จัดปุ่มให้กระจายออกไปอย่างเท่าเทียม */
     align-items: center;
+    /* จัดปุ่มให้อยู่กลางในแนวตั้ง */
     /* border: 1px solid red; */
+    /* (คอมเม้นท์) กำหนดขอบสีแดง (ใช้สำหรับการดีบัก) */
 }
 
-.btn-submit button{
+/* .btn-submit เป็นคลาสสำหรับปุ่มส่งข้อมูล */
+.btn-submit button {
     padding: 10px 50px;
+    /* การเว้นพื้นที่ภายในปุ่มคือ 10px บน/ล่าง และ 50px ซ้าย/ขวา */
     width: 200px;
+    /* ความกว้างของปุ่มคือ 200px */
     background: rgb(53, 174, 255);
+    /* สีพื้นหลังของปุ่มเป็นสีน้ำเงิน */
     border: none;
+    /* ไม่มีขอบ */
     border-radius: 15px;
+    /* มุมของปุ่มโค้งมน 15px */
     color: #fcfcfc;
+    /* สีข้อความในปุ่มเป็นสีขาว */
     font-size: 15px;
+    /* ขนาดฟอนต์ของข้อความในปุ่มคือ 15px */
 }
 
+/* .btn-out เป็นคลาสสำหรับปุ่มออก */
 .btn-out button {
     width: 200px;
+    /* ความกว้างของปุ่มคือ 200px */
     padding: 10px 50px;
+    /* การเว้นพื้นที่ภายในปุ่มคือ 10px บน/ล่าง และ 50px ซ้าย/ขวา */
     background: rgb(238, 57, 57);
+    /* สีพื้นหลังของปุ่มเป็นสีแดง */
     border: none;
+    /* ไม่มีขอบ */
     border-radius: 15px;
+    /* มุมของปุ่มโค้งมน 15px */
     color: #fcfcfc;
+    /* สีข้อความในปุ่มเป็นสีขาว */
     font-size: 15px;
+    /* ขนาดฟอนต์ของข้อความในปุ่มคือ 15px */
 }
 
+/* #previewImg เป็นคลาสสำหรับภาพพรีวิว */
 #previewImg {
     width: 100%;
+    /* ความกว้างของภาพคือ 100% ของกล่องบรรจุ */
     height: 150px;
+    /* ความสูงของภาพคือ 150px */
     object-fit: contain;
+    /* ปรับขนาดภาพให้ไม่เสียสัดส่วน */
     border: 1px solid rgb(0, 0, 0);
+    /* ขอบของภาพเป็นสีดำ */
 }
 
+/* img เป็นสไตล์ทั่วไปสำหรับภาพ */
 img {
-    
     width: 100%;
+    /* ความกว้างของภาพคือ 100% ของกล่องบรรจุ */
     height: 100%;
+    /* ความสูงของภาพคือ 100% ของกล่องบรรจุ */
 }

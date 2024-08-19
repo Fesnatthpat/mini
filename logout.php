@@ -1,9 +1,8 @@
 <?php
 
-    session_start();
-    unset($_SESSION['user_login']);
-    unset($_SESSION['admin_login']);
-    header("location: index.php")
+session_start(); // เริ่มต้นเซสชัน หรือเรียกใช้งานเซสชันที่มีอยู่เพื่อจัดการข้อมูลเซสชันของผู้ใช้
 
+unset($_SESSION['user_login']); // ลบค่าเซสชันที่เก็บข้อมูลการเข้าสู่ระบบของผู้ใช้ทั่วไป
+unset($_SESSION['admin_login']); // ลบค่าเซสชันที่เก็บข้อมูลการเข้าสู่ระบบของผู้ดูแลระบบ
 
-?>
+header("location: index.php"); // เปลี่ยนเส้นทางผู้ใช้ไปยังหน้า index.php (หน้าแรกของเว็บไซต์)

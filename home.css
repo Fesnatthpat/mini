@@ -1,134 +1,134 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าฟอนต์จาก Google Fonts เพื่อใช้ในหน้าเว็บ */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    margin: 0; /* กำหนด margin ให้เป็น 0 สำหรับทุกองค์ประกอบ */
+    padding: 0; /* กำหนด padding ให้เป็น 0 สำหรับทุกองค์ประกอบ */
+    box-sizing: border-box; /* รวมขนาดของ padding และ border เข้ากับขนาดขององค์ประกอบ */
+    font-family: "Kanit", sans-serif; /* กำหนดฟอนต์หลักเป็น Kanit */
+    font-weight: 300; /* กำหนดน้ำหนักฟอนต์เป็น 300 */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */
+    font-family: "Kanit", sans-serif; /* กำหนดฟอนต์หลักเป็น Kanit */
+    font-weight: 400; /* กำหนดน้ำหนักฟอนต์เป็น 400 */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */
+    font-family: "Kanit", sans-serif; /* กำหนดฟอนต์หลักเป็น Kanit */
+    font-weight: 500; /* กำหนดน้ำหนักฟอนต์เป็น 500 */
+    font-style: normal; /* กำหนดสไตล์ฟอนต์เป็นปกติ */
 }
 
 html {
-    height: 100vh;
+    height: 100vh; /* กำหนดความสูงของหน้า HTML ให้เต็ม 100% ของความสูงหน้าจอ */
 }
 
 body {
-    background-image: url(bg-img/layered-waves-haikei.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* height: 620px; */
-    /* background-color: beige; */
+    background-image: url(bg-img/layered-waves-haikei.svg); /* ตั้งค่าภาพพื้นหลังสำหรับหน้าเว็บ */
+    background-position: center; /* จัดตำแหน่งภาพพื้นหลังให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังทำซ้ำ */
+    background-size: cover; /* ปรับขนาดภาพพื้นหลังให้ครอบคลุมทั้งหน้า */
+    /* height: 620px; */ /* (ถูกคอมเม้นต์ไว้) กำหนดความสูงของ body */
+    /* background-color: beige; */ /* (ถูกคอมเม้นต์ไว้) กำหนดสีพื้นหลังเป็นสี beige */
 }
 
 .container {
-    max-width: 100vw;
-    margin: 0 auto;
+    max-width: 100vw; /* กำหนดความกว้างสูงสุดของ container ให้เต็มหน้าจอ */
+    margin: 0 auto; /* จัด container ให้อยู่กึ่งกลางหน้าจอ */
 }
 
 .nav-con {
-    padding: 0px 35px;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    /* border: 1px solid red; */
+    padding: 0px 35px; /* กำหนด padding ด้านข้างสำหรับ nav */
+    margin-top: 40px; /* กำหนดระยะห่างด้านบนของ nav */
+    display: flex; /* กำหนดการจัดวางองค์ประกอบภายในให้เป็นแบบ flexbox */
+    justify-content: center; /* จัดวางเนื้อหาให้อยู่กึ่งกลางตามแนวนอน */
+    /* border: 1px solid red; */ /* (ถูกคอมเม้นต์ไว้) กำหนดเส้นขอบสีแดงสำหรับ nav */
 }
 
 .text-1 {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 40px;
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลางตามแนวนอน */
+    margin-top: 50px; /* กำหนดระยะห่างด้านบนของข้อความ */
+    font-size: 40px; /* กำหนดขนาดของฟอนต์ */
 }
 
 .menu-con {
-    display: flex;
+    display: flex; /* จัดเมนูให้อยู่ในรูปแบบ flexbox */
 }
 
 .menu-con li {
-    padding: 0px 10px;
-    list-style: none;
-    /* margin: 0 10px; */
+    padding: 0px 10px; /* กำหนด padding ด้านข้างสำหรับรายการเมนู */
+    list-style: none; /* ลบสัญลักษณ์ของรายการเมนู (เช่น จุดหรือหมายเลข) */
+    /* margin: 0 10px; */ /* (ถูกคอมเม้นต์ไว้) กำหนด margin ด้านซ้ายและขวาสำหรับรายการเมนู */
 }
 
 .menu-con li a {
-    /* border: 1px solid red; */
-    color: #000000;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #000;
-    text-decoration: none;
-    transition: all 0.3s;
-    background-color: aliceblue;
-    box-shadow: 5px 5px 5px 0px rgb(0, 0, 0);
+    /* border: 1px solid red; */ /* (ถูกคอมเม้นต์ไว้) กำหนดเส้นขอบสีแดงสำหรับลิงก์เมนู */
+    color: #000000; /* กำหนดสีข้อความของลิงก์เป็นสีดำ */
+    padding: 10px; /* กำหนด padding ภายในลิงก์ */
+    border-radius: 10px; /* กำหนดขอบของลิงก์ให้โค้งมน */
+    background-color: #000; /* กำหนดสีพื้นหลังของลิงก์เป็นสีดำ */
+    text-decoration: none; /* ลบการขีดเส้นใต้ลิงก์ */
+    transition: all 0.3s; /* เพิ่มเอฟเฟกต์ transition เมื่อมีการเปลี่ยนแปลงลิงก์ */
+    background-color: aliceblue; /* กำหนดสีพื้นหลังของลิงก์เป็นสีฟ้าอ่อน */
+    box-shadow: 5px 5px 5px 0px rgb(0, 0, 0); /* กำหนดเงาให้กับลิงก์ */
 }
 
 .menu-con li a:hover {
-    opacity: 0.7;
-    text-decoration: underline;
-
+    opacity: 0.7; /* ลดความทึบของลิงก์เมื่อมีการโฮเวอร์ */
+    text-decoration: underline; /* เพิ่มเส้นใต้ลิงก์เมื่อมีการโฮเวอร์ */
 }
 
 .profile-container {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+    /* border: 1px solid red; */ /* (ถูกคอมเม้นต์ไว้) กำหนดเส้นขอบสีแดงสำหรับโปรไฟล์ */
+    display: flex; /* จัดโปรไฟล์ให้อยู่ในรูปแบบ flexbox */
+    justify-content: center; /* จัดโปรไฟล์ให้อยู่กึ่งกลางตามแนวนอน */
+    align-items: center; /* จัดโปรไฟล์ให้อยู่กึ่งกลางตามแนวตั้ง */
+    margin-top: 50px; /* กำหนดระยะห่างด้านบนของโปรไฟล์ */
 }
 
 .profile-con1 {
-    border-radius: 10px;
-    overflow: hidden;
-    height: 300px;
-    width: 400px;
-    box-shadow: 02px 2px 10px black;
-    background-color: azure;
+    border-radius: 10px; /* กำหนดขอบของกล่องโปรไฟล์ให้โค้งมน */
+    overflow: hidden; /* ซ่อนเนื้อหาที่ล้นออกนอกขอบเขตของกล่อง */
+    height: 300px; /* กำหนดความสูงของกล่องโปรไฟล์ */
+    width: 400px; /* กำหนดความกว้างของกล่องโปรไฟล์ */
+    box-shadow: 02px 2px 10px black; /* เพิ่มเงาให้กับกล่องโปรไฟล์ */
+    background-color: azure; /* กำหนดสีพื้นหลังของกล่องโปรไฟล์เป็นสี azure */
 }
 
 .profile-con2 {
-    height: 29%;
-    background-image: url(bg-img/stacked-steps-haikei.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
+    height: 29%; /* กำหนดความสูงของส่วนบนของโปรไฟล์ */
+    background-image: url(bg-img/stacked-steps-haikei.svg); /* ตั้งค่าภาพพื้นหลังสำหรับส่วนบนของโปรไฟล์ */
+    background-position: center; /* จัดตำแหน่งภาพพื้นหลังให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังทำซ้ำ */
+    background-size: cover; /* ปรับขนาดภาพพื้นหลังให้ครอบคลุมพื้นที่ */
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลางตามแนวนอน */
 }
 
 .profile-img {
-    width: 100%;
-    height: 100%;
+    width: 100%; /* กำหนดความกว้างของรูปโปรไฟล์ให้เต็ม 100% */
+    height: 100%; /* กำหนดความสูงของรูปโปรไฟล์ให้เต็ม 100% */
 }
 
 .profile-img img {
-    margin-top: 30px;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    object-fit: cover;
-    box-shadow: 5px 5px 5px black;
+    margin-top: 30px; /* กำหนดระยะห่างด้านบนของรูปโปรไฟล์ */
+    width: 100px; /* กำหนดความกว้างของรูปโปรไฟล์ */
+    height: 100px; /* กำหนดความสูงของรูปโปรไฟล์ */
+    border-radius: 100%; /* กำหนดขอบของรูปโปรไฟล์ให้โค้งมนเป็นวงกลม */
+    object-fit: cover; /* ตัดรูปให้ครอบคลุมพื้นที่ทั้งหมดโดยไม่เสียอัตราส่วน */
+    box-shadow: 5px 5px 5px black; /* เพิ่มเงาให้กับรูปโปรไฟล์ */
 }
 
 .btn-logout {
-    padding: 5px 30px;
-    margin-top: 12px;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    background: rgb(241, 64, 64);
-    box-shadow: 0px 1px 2px 2px black;
+    padding: 5px 30px; /* กำหนด padding ด้านข้างและด้านบน/ล่างสำหรับปุ่มออกจากระบบ */
+    margin-top: 12px; /* กำหนดระยะห่างด้านบนของปุ่มออกจากระบบ */
+    border-radius: 5px; /* กำหนดขอบของปุ่มออกจากระบบให้โค้งมน */
+    border: 1px solid transparent; /* กำหนดขอบของปุ่มเป็นแบบโปร่งใส */
+    background: rgb(241, 64, 64); /* กำหนดสีพื้นหลังของปุ่มออกจากระบบเป็นสีแดง */
+    box-shadow: 0px 1px 2px 2px black; /* เพิ่มเงาให้กับปุ่มออกจากระบบ */
 }
 
 .btn-logout i {
-    color: #000000;
-    font-size: 15px;
+    color: #000000; /* กำหนดสีของไอคอนในปุ่มออกจากระบบเป็นสีดำ */
+    font-size: 15px; /* กำหนดขนาดฟอนต์ของไอคอนในปุ่มออกจากระบบ */
 }
 
 .btn-logout:hover {
-    opacity: 0.7;
+    opacity: 0.7; /* ลดความทึบของปุ่มออกจากระบบเมื่อมีการโฮเวอร์ */
 }

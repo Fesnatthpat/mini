@@ -1,180 +1,271 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าฟอนต์จาก Google Fonts: Kanit และ Roboto Condensed */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* รีเซ็ตค่า margin และ padding ของทุกอิลิเมนต์ให้เป็น 0 และตั้งค่า box-sizing เป็น border-box เพื่อให้ขนาดของกล่องรวมการ border และ padding */
+
     font-family: "Kanit", sans-serif;
+    /* ตั้งค่าฟอนต์สำหรับอิลิเมนต์ทั้งหมดให้ใช้ฟอนต์ Kanit และ fallback เป็น sans-serif */
+
     font-weight: 300;
     font-style: normal;
+    /* ตั้งค่าน้ำหนักฟอนต์เป็น 300 และสไตล์ฟอนต์เป็นปกติ (ไม่เอียง) */
+
     font-family: "Kanit", sans-serif;
     font-weight: 400;
     font-style: normal;
+    /* การตั้งค่าฟอนต์และน้ำหนักเพิ่มเติมนี้จะถูกใช้ */
+
     font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
-
-
+    /* การตั้งค่าฟอนต์และน้ำหนักเพิ่มเติมนี้จะถูกใช้ */
 }
 
 .container {
     max-width: 100vw;
     margin: 0 auto;
+    /* ตั้งค่าความกว้างสูงสุดให้เต็มหน้าจอและจัดกลางแนวนอน */
+
     background-image: url('bg-img/stacked-steps-haikei.svg');
-    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
+    /* ใช้ URL ของภาพ SVG เป็นพื้นหลัง */
+
     background-size: cover;
-    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
+    /* ทำให้ภาพพื้นหลังขยายเพื่อครอบคลุมทั้งหน้าจอ */
+
     background-position: center;
-    /* จัดภาพให้อยู่ตรงกลาง */
+    /* จัดตำแหน่งภาพพื้นหลังให้อยู่ตรงกลาง */
+
     background-repeat: no-repeat;
-    /* ไม่ทำซ้ำภาพ */
+    /* ป้องกันไม่ให้ภาพพื้นหลังทำซ้ำ */
 }
 
 .text-1 {
     text-align: center;
+    /* จัดตำแหน่งข้อความให้อยู่กลาง */
 }
 
 .box-1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
+    /* ใช้ flexbox เพื่อจัดตำแหน่งอิลิเมนต์ให้อยู่กลางทั้งแนวนอนและแนวตั้ง */
+
     height: 100vh;
+    /* ตั้งค่าความสูงของกล่องให้เต็มความสูงของหน้าจอ */
 }
 
 .box-2 {
-    /* border: 1px solid red; */
     background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 1px 10px black;
+    /* ตั้งค่าพื้นหลังของกล่องเป็นสีเทาอ่อน */
 
+    padding: 20px;
+    /* เพิ่ม padding ภายในกล่องเป็น 20px */
+
+    border-radius: 10px;
+    /* ตั้งค่ามุมโค้งของกล่องให้เป็น 10px */
+
+    box-shadow: 0px 1px 10px black;
+    /* เพิ่มเงาด้านล่างของกล่อง */
 }
 
 .search-form {
     display: flex;
     padding: 20px;
+    /* ใช้ flexbox และเพิ่ม padding ภายในฟอร์มเป็น 20px */
 }
 
 .form-group label {
     padding: 0 6px;
+    /* เพิ่ม padding ซ้ายและขวาของ label เป็น 6px */
 }
 
 .form-group input {
     padding: 5px 10px;
+    /* เพิ่ม padding ภายใน input เป็น 5px แนวนอน และ 10px แนวตั้ง */
+
     outline: none;
+    /* ลบเส้นขอบรอบๆ input ที่แสดงเมื่อมีการโฟกัส */
 }
 
 .form-group {
     padding: 10px;
+    /* เพิ่ม padding ภายในกลุ่มฟอร์มเป็น 10px */
 }
 
 .form-group select {
     padding: 5px 10px;
+    /* เพิ่ม padding ภายใน select เป็น 5px แนวนอน และ 10px แนวตั้ง */
 }
 
 .form-group button {
     padding: 5px 10px;
-    background: #62ff6a;
-    border: 1px solid transparent;
-    border-radius: 5px;
+    /* เพิ่ม padding ภายในปุ่มเป็น 5px แนวนอน และ 10px แนวตั้ง */
 
+    background: #62ff6a;
+    /* ตั้งค่าสีพื้นหลังของปุ่มเป็นสีเขียวอ่อน */
+
+    border: 1px solid transparent;
+    /* ตั้งค่าขอบของปุ่มเป็นโปร่งใส */
+
+    border-radius: 5px;
+    /* ตั้งค่ามุมโค้งของปุ่มให้เป็น 5px */
 }
 
 .form-group button:hover {
     opacity: 0.7;
+    /* ลดความทึบของปุ่มลงเป็น 0.7 เมื่อมีการโฟกัสหรือลอย (hover) */
+
     text-decoration: underline;
+    /* เพิ่มขีดเส้นใต้ข้อความเมื่อมีการโฟกัสหรือลอย (hover) */
 }
 
 .form-group {
     display: flex;
-    /* justify-content: center; */
+    /* ใช้ flexbox เพื่อจัดตำแหน่งอิลิเมนต์ภายในกลุ่มฟอร์ม */
+
     align-items: center;
+    /* จัดตำแหน่งอิลิเมนต์ให้อยู่กลางแนวตั้ง */
 }
 
 .form-group i {
     margin-left: 5px;
+    /* เพิ่มระยะห่างทางซ้ายของไอคอนเป็น 5px */
+
     font-size: 15px;
+    /* ตั้งขนาดของไอคอนเป็น 15px */
 }
 
 .btn-con {
-    /* border: 1px solid red; */
     padding: 0 15px;
+    /* เพิ่ม padding ซ้ายและขวาของคอนเทนเนอร์ปุ่มเป็น 15px */
+
     /* margin-right: 50px; */
+    /* การตั้งค่าระยะห่างด้านขวาของคอนเทนเนอร์ปุ่ม (ถูกคอมเมนต์ไว้) */
+
     /* width: 400px; */
-    
+    /* การตั้งค่าความกว้างของคอนเทนเนอร์ปุ่ม (ถูกคอมเมนต์ไว้) */
 }
 
 .add-student-button {
     padding: 5px 10px;
+    /* เพิ่ม padding ภายในปุ่มเพิ่มนักเรียนเป็น 5px แนวนอน และ 10px แนวตั้ง */
+
     margin-bottom: 12px;
+    /* เพิ่มระยะห่างด้านล่างของปุ่มเป็น 12px */
+
     border-radius: 5px;
+    /* ตั้งค่ามุมโค้งของปุ่มให้เป็น 5px */
+
     background: #007bff;
+    /* ตั้งค่าสีพื้นหลังของปุ่มเป็นสีน้ำเงิน */
+
     color: #f4f4f4;
+    /* ตั้งค่าสีข้อความของปุ่มเป็นสีเทาอ่อน */
+
     border: 1px solid transparent;
+    /* ตั้งค่าขอบของปุ่มเป็นโปร่งใส */
 }
 
 .add-student-button:hover {
     opacity: 0.7;
+    /* ลดความทึบของปุ่มเพิ่มนักเรียนลงเป็น 0.7 เมื่อมีการโฟกัสหรือลอย (hover) */
+
     text-decoration: underline;
+    /* เพิ่มขีดเส้นใต้ข้อความเมื่อมีการโฟกัสหรือลอย (hover) */
 }
 
 .out-student-button {
     padding: 5px 10px;
+    /* เพิ่ม padding ภายในปุ่มออกนักเรียนเป็น 5px แนวนอน และ 10px แนวตั้ง */
+
     margin-left: 12px;
+    /* เพิ่มระยะห่างทางซ้ายของปุ่มออกนักเรียนเป็น 12px */
+
     background: rgb(248, 59, 59);
+    /* ตั้งค่าสีพื้นหลังของปุ่มเป็นสีแดง */
+
     color: #f4f4f4;
+    /* ตั้งค่าสีข้อความของปุ่มเป็นสีเทาอ่อน */
+
     border-radius: 5px;
+    /* ตั้งค่ามุมโค้งของปุ่มให้เป็น 5px */
+
     border: 1px solid transparent;
+    /* ตั้งค่าขอบของปุ่มเป็นโปร่งใส */
 }
 
 .out-student-button:hover {
     opacity: 0.7;
+    /* ลดความทึบของปุ่มออกนักเรียนลงเป็น 0.7 เมื่อมีการโฟกัสหรือลอย (hover) */
+
     text-decoration: underline;
+    /* เพิ่มขีดเส้นใต้ข้อความเมื่อมีการโฟกัสหรือลอย (hover) */
 }
-
-
 
 .group-form1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* ใช้ flexbox เพื่อจัดตำแหน่งกลุ่มฟอร์มให้อยู่กลางทั้งแนวนอนและแนวตั้ง */
+
     width: 100%;
     height: 100%;
-
+    /* ตั้งค่าความกว้างและความสูงของกลุ่มฟอร์มให้เต็มพื้นที่ */
 }
-
 
 table {
     width: 100%;
+    /* ตั้งค่าความกว้างของตารางให้เต็มความกว้างของคอนเทนเนอร์ */
+
     border-collapse: collapse;
+    /* รวมเส้นขอบของเซลล์ตารางให้เป็นเส้นเดียว */
 }
 
 th,
 td {
     padding: 15px;
+    /* เพิ่ม padding ภายในเซลล์ของตารางเป็น 15px */
+
     border: 1px solid #ddd;
+    /* เพิ่มเส้นขอบเซลล์ของตารางเป็นสีเทาอ่อน */
+
     text-align: left;
+    /* จัดข้อความภายในเซลล์ให้ชิดซ้าย */
 }
 
 th {
     background-color: #f4f4f4;
+    /* ตั้งค่าสีพื้นหลังของหัวตารางเป็นสีเทาอ่อน */
+
     text-align: center;
+    /* จัดข้อความภายในหัวตารางให้อยู่กลาง */
 }
 
 td img {
     width: 40px;
     height: 40px;
+    /* ตั้งค่าขนาดของภาพในเซลล์เป็น 40px x 40px */
+
     border-radius: 50%;
+    /* ตั้งค่ามุมโค้งของภาพให้เป็นวงกลม */
 }
 
 a {
     color: #007bff;
+    /* ตั้งค่าสีข้อความของลิงก์เป็นสีน้ำเงิน */
+
     text-decoration: none;
+    /* ลบขีดเส้นใต้จากข้อความลิงก์ */
+
     padding: 10px;
+    /* เพิ่ม padding ภายในลิงก์เป็น 10px */
 }
 
 a:hover {
     opacity: 0.7;
+    /* ลดความทึบของลิงก์ลงเป็น 0.7 เมื่อมีการโฟกัสหรือลอย (hover) */
 }
-

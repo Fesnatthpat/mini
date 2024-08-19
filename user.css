@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าฟอนต์ Kanit และ Roboto Condensed จาก Google Fonts */
 
 * {
     margin: 0;
@@ -7,83 +8,80 @@
     font-family: "Kanit", sans-serif;
     font-weight: 300;
     font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    /* ตั้งค่าฟอนต์พื้นฐานสำหรับทุกองค์ประกอบ */
 }
 
+/* กำหนดความสูงของ HTML ให้เต็มหน้าจอ */
 html {
     height: 100vh;
 }
 
+/* กำหนดพื้นหลังของ body */
 body {
     background-image: url(bg-img/layered-waves-haikei.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    /* height: 620px; */
-    /* background-color: beige; */
 }
 
+/* กำหนดความกว้างสูงสุดของ container */
 .container {
     max-width: 100vw;
     margin: 0 auto;
 }
 
+/* กำหนดลักษณะการจัดวางเมนู */
 .nav-con {
     padding: 0px 35px;
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    /* border: 1px solid red; */
 }
 
+/* กำหนดลักษณะข้อความ */
 .text-1 {
     text-align: center;
     margin-top: 50px;
     font-size: 40px;
 }
 
+/* กำหนดลักษณะของเมนู */
 .menu-con {
     display: flex;
 }
 
+/* กำหนดลักษณะของรายการเมนู */
 .menu-con li {
     padding: 0px 10px;
     list-style: none;
-    /* margin: 0 10px; */
 }
 
+/* กำหนดลักษณะของลิงก์ในเมนู */
 .menu-con li a {
-    /* border: 1px solid red; */
     color: #000000;
     padding: 10px;
     border-radius: 10px;
-    background-color: #000;
-    text-decoration: none;
-    transition: all 0.3s;
     background-color: aliceblue;
     box-shadow: 5px 5px 5px 0px rgb(0, 0, 0);
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ลิงก์ในเมนู */
 .menu-con li a:hover {
     opacity: 0.7;
     text-decoration: underline;
-
 }
 
+/* กำหนดลักษณะของคอนเทนเนอร์โปรไฟล์ */
 .profile-container {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
 
+/* กำหนดลักษณะของคอนเทนเนอร์โปรไฟล์ที่มีข้อมูล */
 .profile-con1 {
     border-radius: 10px;
     overflow: hidden;
@@ -93,6 +91,7 @@ body {
     background-color: azure;
 }
 
+/* กำหนดลักษณะของส่วนหัวของโปรไฟล์ */
 .profile-con2 {
     height: 29%;
     background-image: url(bg-img/stacked-steps-haikei.svg);
@@ -102,11 +101,13 @@ body {
     text-align: center;
 }
 
+/* กำหนดลักษณะของรูปโปรไฟล์ */
 .profile-img {
     width: 100%;
     height: 100%;
 }
 
+/* กำหนดลักษณะของรูปภาพในโปรไฟล์ */
 .profile-img img {
     margin-top: 30px;
     width: 100px;
@@ -116,6 +117,7 @@ body {
     box-shadow: 5px 5px 5px black;
 }
 
+/* กำหนดลักษณะของปุ่มออก */
 .btn-logout {
     padding: 5px 30px;
     margin-top: 12px;
@@ -125,86 +127,89 @@ body {
     box-shadow: 0px 1px 2px 2px black;
 }
 
+/* กำหนดลักษณะของไอคอนในปุ่มออก */
 .btn-logout i {
     color: #000000;
     font-size: 15px;
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ปุ่มออก */
 .btn-logout:hover {
     opacity: 0.7;
 }
 
+/* กำหนดลักษณะของหัวข้อที่สอง */
 .text-2 h2 {
     font-size: 50px;
     text-align: center;
 }
 
+/* กำหนดลักษณะของกล่อง */
 .box-1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    /* border: 1px solid red; */
-    /* height: 100vh; */
     overflow: hidden;
 }
 
+/* กำหนดลักษณะของกล่องที่สอง */
 .box-2 {
-    /* border: 1px solid red; */
     background: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 1px 10px black;
-
 }
 
+/* กำหนดลักษณะของกลุ่มฟอร์ม */
+.form-group {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* กำหนดลักษณะของป้ายชื่อในกลุ่มฟอร์ม */
 .form-group label {
     padding: 0 6px;
 }
 
+/* กำหนดลักษณะของช่องกรอกข้อมูลในกลุ่มฟอร์ม */
 .form-group input {
     padding: 5px 10px;
     outline: none;
 }
 
-.form-group {
-    padding: 10px;
-}
-
+/* กำหนดลักษณะของช่องเลือกในกลุ่มฟอร์ม */
 .form-group select {
     padding: 5px 10px;
 }
 
+/* กำหนดลักษณะของปุ่มในกลุ่มฟอร์ม */
 .form-group button {
     padding: 5px 10px;
     background: #62ff6a;
     border: 1px solid transparent;
     border-radius: 5px;
-
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ปุ่มในกลุ่มฟอร์ม */
 .form-group button:hover {
     opacity: 0.7;
     text-decoration: underline;
 }
 
-.form-group {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-
+/* กำหนดลักษณะของไอคอนในกลุ่มฟอร์ม */
 .form-group i {
     margin-left: 5px;
     font-size: 15px;
 }
 
+/* กำหนดลักษณะของกลุ่มปุ่ม */
 .btn-con {
-    /* border: 1px solid red; */
     padding: 0 15px;
-    
 }
 
+/* กำหนดลักษณะของปุ่มเพิ่มข้อมูลนักเรียน */
 .add-student-button {
     padding: 5px 10px;
     margin-bottom: 12px;
@@ -214,11 +219,13 @@ body {
     border: 1px solid transparent;
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ปุ่มเพิ่มข้อมูลนักเรียน */
 .add-student-button:hover {
     opacity: 0.7;
     text-decoration: underline;
 }
 
+/* กำหนดลักษณะของปุ่มออก */
 .out-student-button {
     padding: 5px 10px;
     margin-left: 12px;
@@ -228,29 +235,29 @@ body {
     border: 1px solid transparent;
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ปุ่มออก */
 .out-student-button:hover {
     opacity: 0.7;
     text-decoration: underline;
 }
 
-
-
+/* กำหนดลักษณะของกลุ่มฟอร์ม */
 .group-form1 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-
 }
 
-
+/* กำหนดลักษณะของตาราง */
 table {
     width: 100%;
     border-collapse: collapse;
     overflow-y: scroll;
 }
 
+/* กำหนดลักษณะของหัวตารางและเซลล์ตาราง */
 th,
 td {
     padding: 15px;
@@ -258,27 +265,32 @@ td {
     text-align: left;
 }
 
+/* กำหนดลักษณะของหัวข้อคอลัมน์ */
 th {
     background-color: #f4f4f4;
     text-align: center;
 }
 
+/* กำหนดลักษณะของรูปภาพในตาราง */
 td img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
+/* กำหนดลักษณะของลิงก์ */
 a {
     color: #007bff;
     text-decoration: none;
     padding: 10px;
 }
 
+/* ลักษณะเมื่อเลื่อนเมาส์ไปที่ลิงก์ */
 a:hover {
     opacity: 0.7;
 }
 
+/* กำหนดลักษณะของฟอร์มค้นหา */
 .search-form {
     display: flex;
     margin-bottom: 15px;

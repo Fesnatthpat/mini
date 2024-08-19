@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าแบบอักษรจาก Google Fonts ซึ่งมี Kanit และ Roboto Condensed */
 
 * {
     margin: 0;
@@ -13,22 +14,24 @@
     font-family: "Kanit", sans-serif;
     font-weight: 500;
     font-style: normal;
-
-
 }
+
+/* รีเซ็ต margin และ padding ของทุกองค์ประกอบ และกำหนด font-family เป็น Kanit พร้อมกำหนดความหนาของตัวอักษรเป็น 300, 400, และ 500 */
 
 .form-container {
     max-width: 100vw;
     margin: 0 auto;
     background-image: url('bg-img/stacked-steps-haikei.svg');
-    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
+    /* ใช้ภาพพื้นหลังจาก URL ที่กำหนด */
     background-size: cover;
-    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
+    /* ปรับขนาดภาพให้ครอบคลุมทั้งพื้นที่ */
     background-position: center;
     /* จัดภาพให้อยู่ตรงกลาง */
     background-repeat: no-repeat;
-    /* ไม่ทำซ้ำภาพ */
+    /* ป้องกันไม่ให้ภาพทำซ้ำ */
 }
+
+/* กำหนดการจัดรูปแบบของ container ที่ใช้ฟอร์ม */
 
 .box1 {
     /* border: 1px solid red; */
@@ -37,6 +40,8 @@
     justify-content: center;
     align-items: center;
 }
+
+/* กำหนดการจัดรูปแบบของ box1 และจัดให้อยู่กลางหน้าจอ */
 
 .box2 {
     /* border: 1px solid red; */
@@ -47,20 +52,30 @@
     border-radius: 8px;
 }
 
+/* จัดรูปแบบของ box2 ให้เป็นกล่องที่มีเงา พื้นหลังสีขาว และขอบมน */
 
 .text-teacher {
     text-align: center;
     font-size: 24px;
     margin-bottom: 10px;
 }
+
+/* กำหนดการจัดรูปแบบของข้อความ "แก้ไขรายวิชา" ให้อยู่กลาง มีขนาด 24px และมีระยะห่างด้านล่าง 10px */
+
 .form-group {
     margin-bottom: 15px;
 }
+
+/* กำหนดระยะห่างด้านล่างของแต่ละกลุ่มในฟอร์ม 15px */
+
 .form-group label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
+
+/* กำหนดให้ label ของฟอร์มแสดงผลเต็มบรรทัด มีตัวหนา และมีระยะห่างด้านล่าง 5px */
+
 .form-group input,
 .form-group select {
     width: 100%;
@@ -71,6 +86,7 @@
     outline: none;
 }
 
+/* จัดรูปแบบ input และ select ในฟอร์ม ให้กว้างเต็มบรรทัด มี padding 8px ขอบสีเทาอ่อน ขอบมน 3px และไม่มีเส้นขอบเมื่อคลิก */
 
 .btn-con {
     display: flex;
@@ -79,7 +95,9 @@
     /* border: 1px solid red; */
 }
 
-.btn-submit button{
+/* จัดปุ่มภายใน container ให้อยู่ห่างกันอย่างสม่ำเสมอ และจัดให้อยู่กลางบรรทัด */
+
+.btn-submit button {
     padding: 10px 50px;
     width: 200px;
     background: rgb(53, 174, 255);
@@ -88,6 +106,8 @@
     color: #fcfcfc;
     font-size: 15px;
 }
+
+/* จัดปุ่มบันทึกข้อมูลให้มีขนาด 200px พื้นหลังสีน้ำเงิน ขอบมน 15px ตัวอักษรสีขาว และขนาด 15px */
 
 .btn-out button {
     width: 200px;
@@ -99,17 +119,25 @@
     font-size: 15px;
 }
 
+/* จัดปุ่มออกจากหน้าให้มีขนาด 200px พื้นหลังสีแดง ขอบมน 15px ตัวอักษรสีขาว และขนาด 15px */
+
 .alert-danger {
     color: red;
 }
+
+/* กำหนดสีตัวอักษรของข้อความแจ้งเตือนเป็นสีแดง */
 
 .alert-success {
     color: greenyellow;
 }
 
+/* กำหนดสีตัวอักษรของข้อความแจ้งเตือนเป็นสีเขียวอ่อน */
+
 .alert-warning {
     color: blue;
 }
+
+/* กำหนดสีตัวอักษรของข้อความแจ้งเตือนเป็นสีน้ำเงิน */
 
 #previewImg {
     width: 100%;
@@ -118,8 +146,11 @@
     border: 1px solid rgb(0, 0, 0);
 }
 
+/* กำหนดขนาดของภาพพรีวิวให้อยู่ที่ 100% กว้าง และ 150px สูง ขอบภาพเป็นสีดำ */
+
 img {
-    
     width: 100%;
     height: 100%;
 }
+
+/* กำหนดขนาดของภาพทั้งหมดในเอกสารให้กว้างและสูงเต็ม 100% ของพื้นที่ที่จัดสรรไว้ */

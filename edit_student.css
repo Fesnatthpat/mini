@@ -1,113 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าฟอนต์จาก Google Fonts โดยใช้ฟอนต์ Kanit และ Roboto Condensed */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* ตั้งค่าค่าขอบของทุกองค์ประกอบให้เป็น 0 เพื่อไม่ให้มีช่องว่างเริ่มต้น */
+    padding: 0; /* ตั้งค่าช่องว่างภายในของทุกองค์ประกอบให้เป็น 0 */
+    box-sizing: border-box; /* รวมการคำนวณ padding และ border ในขนาดขององค์ประกอบ */
+    font-family: "Kanit", sans-serif; /* กำหนดฟอนต์หลักเป็น Kanit และใช้ sans-serif เป็นฟอนต์สำรอง */
+    font-weight: 300; /* ตั้งค่า font-weight เป็น 300 (บาง) */
+    font-style: normal; /* ตั้งค่า font-style เป็นปกติ */
+    /* การกำหนด font-family, font-weight และ font-style ซ้ำซ้อนซึ่งไม่จำเป็นต้องใช้ */
     font-family: "Kanit", sans-serif;
-    font-weight: 300;
+    font-weight: 400; /* ตั้งค่า font-weight เป็น 400 (ปกติ) */
     font-style: normal;
     font-family: "Kanit", sans-serif;
-    font-weight: 400;
+    font-weight: 500; /* ตั้งค่า font-weight เป็น 500 (หนา) */
     font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-
-
 }
 
 .form-container {
-    max-width: 100vw;
-    margin: 0 auto;
-    background-image: url('bg-img/stacked-steps-haikei.svg');
-    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
-    background-size: cover;
-    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
-    background-position: center;
-    /* จัดภาพให้อยู่ตรงกลาง */
-    background-repeat: no-repeat;
-    /* ไม่ทำซ้ำภาพ */
+    max-width: 100vw; /* กำหนดความกว้างสูงสุดของคอนเทนเนอร์ให้เป็น 100% ของความกว้างหน้าจอ */
+    margin: 0 auto; /* จัดคอนเทนเนอร์ให้อยู่กลางในแนวนอน */
+    background-image: url('bg-img/stacked-steps-haikei.svg'); /* ตั้งค่าภาพพื้นหลังจาก URL ที่ระบุ */
+    background-size: cover; /* ปรับขนาดภาพให้ครอบคลุมคอนเทนเนอร์ */
+    background-position: center; /* จัดตำแหน่งภาพให้อยู่ตรงกลางคอนเทนเนอร์ */
+    background-repeat: no-repeat; /* ห้ามให้ภาพพื้นหลังทำซ้ำ */
 }
 
 .box1 {
-    /* border: 1px solid red; */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* border: 1px solid red; */ /* ขอบสีแดงสำหรับการดีบั๊ก (สามารถลบออกได้) */
+    height: 100vh; /* ตั้งความสูงของบ็อกซ์ให้เต็มความสูงหน้าจอ */
+    display: flex; /* ใช้ Flexbox เพื่อจัดการเลย์เอาต์ของบ็อกซ์ */
+    justify-content: center; /* จัดเนื้อหาให้อยู่กลางในแนวนอน */
+    align-items: center; /* จัดเนื้อหาให้อยู่กลางในแนวตั้ง */
 }
 
 .box2 {
-    /* border: 1px solid red; */
-    width: 500px;
-    padding: 20px;
-    box-shadow: 0px 5px 10px black;
-    background: #fcfcfc;
-    border-radius: 8px;
+    /* border: 1px solid red; */ /* ขอบสีแดงสำหรับการดีบั๊ก (สามารถลบออกได้) */
+    width: 500px; /* ตั้งความกว้างของบ็อกซ์ให้เป็น 500px */
+    padding: 20px; /* เพิ่มช่องว่างภายในบ็อกซ์ 20px */
+    box-shadow: 0px 5px 10px black; /* เพิ่มเงาให้กับบ็อกซ์ */
+    background: #fcfcfc; /* กำหนดพื้นหลังของบ็อกซ์เป็นสีเทาอ่อน */
+    border-radius: 8px; /* ทำให้มุมของบ็อกซ์มีความโค้งมน 8px */
 }
-
 
 .text-teacher {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
+    font-size: 24px; /* กำหนดขนาดฟอนต์เป็น 24px */
+    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่างของข้อความ 10px */
 }
+
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* เพิ่มช่องว่างด้านล่างของกลุ่มฟอร์ม 15px */
 }
+
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    display: block; /* แสดงป้ายชื่อเป็นบล็อก (แยกบรรทัดใหม่) */
+    font-weight: bold; /* ทำให้ฟอนต์ของป้ายชื่อหนา */
+    margin-bottom: 5px; /* เพิ่มช่องว่างด้านล่างของป้ายชื่อ 5px */
 }
+
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    outline: none;
+    width: 100%; /* ตั้งความกว้างของช่องกรอกข้อมูลและเมนูดรอปดาวน์ให้เป็น 100% ของความกว้างของกลุ่มฟอร์ม */
+    padding: 8px; /* เพิ่มช่องว่างภายในช่องกรอกข้อมูลและเมนูดรอปดาวน์ 8px */
+    border: 1px solid #ccc; /* กำหนดขอบของช่องกรอกข้อมูลและเมนูดรอปดาวน์เป็นสีเทาอ่อน */
+    border-radius: 3px; /* ทำให้มุมของช่องกรอกข้อมูลและเมนูดรอปดาวน์มีความโค้งมน 3px */
+    box-sizing: border-box; /* รวมการคำนวณ padding และ border ในขนาดของช่องกรอกข้อมูลและเมนูดรอปดาวน์ */
+    outline: none; /* เอาเส้นขอบออกเมื่อช่องกรอกข้อมูลและเมนูดรอปดาวน์ถูกเลือก */
 }
-
 
 .btn-con {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* border: 1px solid red; */
+    display: flex; /* ใช้ Flexbox เพื่อจัดการเลย์เอาต์ของปุ่ม */
+    justify-content: space-around; /* กระจายปุ่มให้ห่างกันอย่างเท่าเทียม */
+    align-items: center; /* จัดปุ่มให้อยู่กลางในแนวตั้ง */
+    /* border: 1px solid red; */ /* ขอบสีแดงสำหรับการดีบั๊ก (สามารถลบออกได้) */
 }
 
-.btn-submit button{
-    padding: 10px 50px;
-    width: 200px;
-    background: rgb(53, 174, 255);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
+.btn-submit button {
+    padding: 10px 50px; /* เพิ่มช่องว่างภายในปุ่ม 10px ด้านบน-ล่าง และ 50px ด้านซ้าย-ขวา */
+    width: 200px; /* ตั้งความกว้างของปุ่มให้เป็น 200px */
+    background: rgb(53, 174, 255); /* กำหนดพื้นหลังของปุ่มเป็นสีน้ำเงิน */
+    border: none; /* เอาขอบของปุ่มออก */
+    border-radius: 15px; /* ทำให้มุมของปุ่มมีความโค้งมน 15px */
+    color: #fcfcfc; /* กำหนดสีของข้อความในปุ่มเป็นสีขาว */
+    font-size: 15px; /* กำหนดขนาดฟอนต์ของข้อความในปุ่มเป็น 15px */
 }
 
 .btn-out button {
-    width: 200px;
-    padding: 10px 50px;
-    background: rgb(238, 57, 57);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
+    width: 200px; /* ตั้งความกว้างของปุ่มให้เป็น 200px */
+    padding: 10px 50px; /* เพิ่มช่องว่างภายในปุ่ม 10px ด้านบน-ล่าง และ 50px ด้านซ้าย-ขวา */
+    background: rgb(238, 57, 57); /* กำหนดพื้นหลังของปุ่มเป็นสีแดง */
+    border: none; /* เอาขอบของปุ่มออก */
+    border-radius: 15px; /* ทำให้มุมของปุ่มมีความโค้งมน 15px */
+    color: #fcfcfc; /* กำหนดสีของข้อความในปุ่มเป็นสีขาว */
+    font-size: 15px; /* กำหนดขนาดฟอนต์ของข้อความในปุ่มเป็น 15px */
 }
 
 #previewImg {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-    border: 1px solid rgb(0, 0, 0);
+    width: 100%; /* ตั้งความกว้างของภาพพรีวิวให้เป็น 100% ของความกว้างของบล็อกที่บรรจุ */
+    height: 150px; /* ตั้งความสูงของภาพพรีวิวให้เป็น 150px */
+    object-fit: contain; /* ปรับขนาดภาพให้พอดีกับขนาดที่กำหนด โดยไม่ตัดภาพ */
+    border: 1px solid rgb(0, 0, 0); /* กำหนดขอบของภาพพรีวิวเป็นสีดำ */
 }
 
 img {
-    
-    width: 100%;
-    height: 100%;
+    width: 100%; /* ตั้งความกว้างของภาพให้เป็น 100% ของความกว้างขององค์ประกอบที่บรรจุ */
+    height: 100%; /* ตั้งความสูงของภาพให้เป็น 100% ของความสูงขององค์ประกอบที่บรรจุ */
 }

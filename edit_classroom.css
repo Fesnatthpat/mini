@@ -1,113 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* นำเข้าฟอนต์จาก Google Fonts ที่ชื่อว่า Kanit และ Roboto Condensed */
 
+/* กำหนดสไตล์พื้นฐานให้กับทุกองค์ประกอบในเอกสาร */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Kanit", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-
-
+    margin: 0; /* ลบขอบเขตภายนอกของทุกองค์ประกอบ */
+    padding: 0; /* ลบขอบเขตภายในของทุกองค์ประกอบ */
+    box-sizing: border-box; /* รวมขนาดของ padding และ border ในขนาดองค์ประกอบทั้งหมด */
+    font-family: "Kanit", sans-serif; /* ใช้ฟอนต์ Kanit เป็นฟอนต์หลัก */
+    font-weight: 300; /* ตั้งค่าน้ำหนักฟอนต์เป็น 300 */
+    font-style: normal; /* ตั้งค่ารูปแบบฟอนต์เป็นปกติ (ไม่เป็นตัวเอียง) */
+    font-family: "Kanit", sans-serif; /* ใช้ฟอนต์ Kanit เป็นฟอนต์หลัก */
+    font-weight: 400; /* ตั้งค่าน้ำหนักฟอนต์เป็น 400 */
+    font-style: normal; /* ตั้งค่ารูปแบบฟอนต์เป็นปกติ (ไม่เป็นตัวเอียง) */
+    font-family: "Kanit", sans-serif; /* ใช้ฟอนต์ Kanit เป็นฟอนต์หลัก */
+    font-weight: 500; /* ตั้งค่าน้ำหนักฟอนต์เป็น 500 */
+    font-style: normal; /* ตั้งค่ารูปแบบฟอนต์เป็นปกติ (ไม่เป็นตัวเอียง) */
 }
 
 .form-container {
-    max-width: 100vw;
-    margin: 0 auto;
-    background-image: url('bg-img/stacked-steps-haikei.svg');
-    /* ใช้ URL ของภาพ SVG ที่ต้องการ */
-    background-size: cover;
-    /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้าจอ */
-    background-position: center;
-    /* จัดภาพให้อยู่ตรงกลาง */
-    background-repeat: no-repeat;
-    /* ไม่ทำซ้ำภาพ */
+    max-width: 100vw; /* จำกัดความกว้างสูงสุดของคอนเทนเนอร์เป็นขนาดของหน้าจอทั้งหมด */
+    margin: 0 auto; /* จัดคอนเทนเนอร์ให้อยู่กลางหน้าจอ */
+    background-image: url('bg-img/stacked-steps-haikei.svg'); /* ใช้ภาพพื้นหลังจากไฟล์ SVG */
+    background-size: cover; /* ปรับขนาดภาพพื้นหลังให้ครอบคลุมทั้งคอนเทนเนอร์ */
+    background-position: center; /* จัดภาพพื้นหลังให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ทำซ้ำภาพพื้นหลัง */
 }
 
 .box1 {
-    /* border: 1px solid red; */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* border: 1px solid red;  ขอบเขตนี้ถูกคอมเม้นออก */
+    height: 100vh; /* ตั้งความสูงให้เต็มหน้าจอ */
+    display: flex; /* ใช้ Flexbox สำหรับจัดการตำแหน่งขององค์ประกอบภายใน */
+    justify-content: center; /* จัดตำแหน่งแนวนอนให้อยู่ตรงกลาง */
+    align-items: center; /* จัดตำแหน่งแนวตั้งให้อยู่ตรงกลาง */
 }
 
 .box2 {
-    /* border: 1px solid red; */
-    width: 500px;
-    padding: 20px;
-    box-shadow: 0px 5px 10px black;
-    background: #fcfcfc;
-    border-radius: 8px;
+    /* border: 1px solid red; ขอบเขตนี้ถูกคอมเม้นออก */
+    width: 500px; /* ตั้งความกว้างของกล่อง */
+    padding: 20px; /* เพิ่มช่องว่างภายในกล่อง */
+    box-shadow: 0px 5px 10px black; /* เพิ่มเงาให้กับกล่อง */
+    background: #fcfcfc; /* ตั้งสีพื้นหลังของกล่อง */
+    border-radius: 8px; /* ทำมุมของกล่องให้โค้งมน */
 }
-
 
 .text-teacher {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
+    text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+    font-size: 24px; /* กำหนดขนาดฟอนต์ */
+    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่างของข้อความ */
 }
+
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* เพิ่มช่องว่างด้านล่างของกลุ่มฟอร์ม */
 }
+
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    display: block; /* ตั้งค่าการแสดงผลป้ายชื่อให้เป็นบล็อก */
+    font-weight: bold; /* ทำให้ป้ายชื่อเป็นตัวหนา */
+    margin-bottom: 5px; /* เพิ่มช่องว่างด้านล่างของป้ายชื่อ */
 }
+
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    outline: none;
+    width: 100%; /* ตั้งความกว้างให้เต็มกลุ่มฟอร์ม */
+    padding: 8px; /* เพิ่มช่องว่างภายในกล่องป้อนข้อมูล */
+    border: 1px solid #ccc; /* เพิ่มกรอบรอบๆ กล่องป้อนข้อมูล */
+    border-radius: 3px; /* ทำมุมของกล่องป้อนข้อมูลให้โค้งมน */
+    box-sizing: border-box; /* รวมขนาดของ padding และ border ในขนาดองค์ประกอบทั้งหมด */
+    outline: none; /* ลบกรอบสีนอกที่แสดงเมื่อกล่องป้อนข้อมูลถูกเลือก */
 }
-
 
 .btn-con {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* border: 1px solid red; */
+    display: flex; /* ใช้ Flexbox สำหรับจัดการตำแหน่งของปุ่ม */
+    justify-content: space-around; /* จัดปุ่มให้กระจายทั่วทั้งคอนเทนเนอร์ */
+    align-items: center; /* จัดปุ่มให้ตรงกลางในแนวตั้ง */
+    /* border: 1px solid red; ขอบเขตนี้ถูกคอมเม้นออก */
 }
 
-.btn-submit button{
-    padding: 10px 50px;
-    width: 200px;
-    background: rgb(53, 174, 255);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
+.btn-submit button {
+    padding: 10px 50px; /* เพิ่มช่องว่างภายในปุ่ม */
+    width: 200px; /* กำหนดความกว้างของปุ่ม */
+    background: rgb(53, 174, 255); /* ตั้งสีพื้นหลังของปุ่ม */
+    border: none; /* ลบกรอบของปุ่ม */
+    border-radius: 15px; /* ทำมุมของปุ่มให้โค้งมน */
+    color: #fcfcfc; /* ตั้งสีข้อความภายในปุ่ม */
+    font-size: 15px; /* กำหนดขนาดฟอนต์ */
 }
 
 .btn-out button {
-    width: 200px;
-    padding: 10px 50px;
-    background: rgb(238, 57, 57);
-    border: none;
-    border-radius: 15px;
-    color: #fcfcfc;
-    font-size: 15px;
+    width: 200px; /* กำหนดความกว้างของปุ่ม */
+    padding: 10px 50px; /* เพิ่มช่องว่างภายในปุ่ม */
+    background: rgb(238, 57, 57); /* ตั้งสีพื้นหลังของปุ่ม */
+    border: none; /* ลบกรอบของปุ่ม */
+    border-radius: 15px; /* ทำมุมของปุ่มให้โค้งมน */
+    color: #fcfcfc; /* ตั้งสีข้อความภายในปุ่ม */
+    font-size: 15px; /* กำหนดขนาดฟอนต์ */
 }
 
 #previewImg {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-    border: 1px solid rgb(0, 0, 0);
+    width: 100%; /* ตั้งความกว้างให้เต็มคอนเทนเนอร์ */
+    height: 150px; /* กำหนดความสูงของภาพ */
+    object-fit: contain; /* ปรับขนาดภาพให้เข้ากับกรอบโดยไม่ตัดภาพ */
+    border: 1px solid rgb(0, 0, 0); /* เพิ่มกรอบรอบๆ ภาพ */
 }
 
 img {
-    
-    width: 100%;
-    height: 100%;
+    width: 100%; /* ตั้งความกว้างของภาพให้เต็มคอนเทนเนอร์ */
+    height: 100%; /* ตั้งความสูงของภาพให้เต็มคอนเทนเนอร์ */
 }
