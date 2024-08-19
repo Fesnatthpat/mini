@@ -90,11 +90,12 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC); // เก็บผลลัพธ
                 <?php } ?>
 
                 <!-- ฟอร์มสำหรับเพิ่มตารางสอน -->
-                <form action="" method="POST">
+                <form action="edit_schedule_db.php" method="POST">
                     <!-- กลุ่มฟอร์มสำหรับภาคเรียน -->
                     <div class="form-group">
+                        <input type="hidden" value="<?= htmlspecialchars($data['schedule_id']); ?>" name="schedule_id">
                         <label for="semester">ภาคเรียนที่1</label>
-                        <select id="level" name="semester">
+                        <select name="semester">
                             <option value="">เลือกภาคเรียน</option>
                             <option value="1" <?= ($data['semester'] == 1) ? 'selected' : ''; ?>>1</option>
                             <option value="2" <?= ($data['semester'] == 2) ? 'selected' : ''; ?>>2</option>
@@ -104,7 +105,7 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC); // เก็บผลลัพธ
                     <!-- กลุ่มฟอร์มสำหรับปีการศึกษา -->
                     <div class="form-group">
                         <label for="academic_year">ปีการศึกษา</label>
-                        <select id="level" name="academic_year">
+                        <select name="academic_year">
                             <option value="">เลือกปีการศึกษา</option>
                             <option value="2567" <?= ($data['academic_year'] == 2567) ? 'selected' : ''; ?>>2567</option>
                             <option value="2566" <?= ($data['academic_year'] == 2566) ? 'selected' : ''; ?>>2566</option>
@@ -128,7 +129,7 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC); // เก็บผลลัพธ
                     <!-- กลุ่มฟอร์มสำหรับระดับชั้น -->
                     <div class="form-group">
                         <label for="name">ระดับชั้น</label>
-                        <select id="level" name="level">
+                        <select name="level">
                             <option value="">เลือกระดับชั้น</option>
                             <option value="ม.1" <?= ($data['level'] == 'ม.1') ? 'selected' : ''; ?>>ม.1</option>
                             <option value="ม.2" <?= ($data['level'] == 'ม.2') ? 'selected' : ''; ?>>ม.2</option>
@@ -139,7 +140,7 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC); // เก็บผลลัพธ
                     <!-- กลุ่มฟอร์มสำหรับครูผู้สอน -->
                     <div class="form-group">
                         <label for="t_id">ครูผู้สอน</label>
-                        <select id="level" name="t_id">
+                        <select name="t_id">
                             <option value="">เลือกครูผู้สอน</option>
                             <?php foreach ($teacherData as $teachers) { ?>
                                 <option value="<?= htmlspecialchars($teachers['t_id']); ?>" <?= ($data['t_id'] == $teachers['t_id']) ? 'selected' : ''; ?>>
@@ -167,33 +168,34 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC); // เก็บผลลัพธ
                         <label for="teacher_date">วัน</label>
                         <select id="level" name="teacher_date">
                             <option value="">เลือกวัน</option>
-                            <option value="จันทร์" <?= ($data['teacher_date'] == 'จ.') ? 'selected' : ''; ?>>จันทร์</option>
-                            <option value="อังคาร" <?= ($data['teacher_date'] == 'อ.') ? 'selected' : ''; ?>>อังคาร</option>
-                            <option value="พุธ" <?= ($data['teacher_date'] == 'พ.') ? 'selected' : ''; ?>>พุธ</option>
-                            <option value="พฤหัสบดี" <?= ($data['teacher_date'] == 'พฤ.') ? 'selected' : ''; ?>>พฤหัสบดี</option>
-                            <option value="ศุกร์" <?= ($data['teacher_date'] == 'ศ.') ? 'selected' : ''; ?>>ศุกร์</option>
+                            <option value="จ." <?= ($data['teacher_date'] == 'จ.') ? 'selected' : ''; ?>>จันทร์</option>
+                            <option value="อ." <?= ($data['teacher_date'] == 'อ.') ? 'selected' : ''; ?>>อังคาร</option>
+                            <option value="พ." <?= ($data['teacher_date'] == 'พ.') ? 'selected' : ''; ?>>พุธ</option>
+                            <option value="พฤ." <?= ($data['teacher_date'] == 'พฤ.') ? 'selected' : ''; ?>>พฤหัสบดี</option>
+                            <option value="ศ." <?= ($data['teacher_date'] == 'ศ.') ? 'selected' : ''; ?>>ศุกร์</option>
                         </select>
                     </div>
 
                     <!-- กลุ่มฟอร์มสำหรับเวลาเรียน -->
                     <div class="form-group">
                         <label for="teacher_time">เวลา</label>
-                        <select type="time" name="teacher_time" value="<?= htmlspecialchars($data['teacher_time']); ?>"> <!-- input สำหรับเลือกเวลา -->
-                            <option value="08:00 - 09:00 น.">08:00 - 09:00 น.</option>
-                            <option value="09:00 - 10:00 น.">09:00 - 10:00 น.</option>
-                            <option value="10:00 - 11:00 น.">10:00 - 11:00 น.</option>
-                            <option value="11:00 - 12:00 น.">11:00 - 12:00 น.</option>
-                            <option value="12:00 - 13:00 น.">12:00 - 13:00 น.</option>
-                            <option value="13:00 - 14:00 น.">13:00 - 14:00 น.</option>
-                            <option value="14:00 - 15:00 น.">14:00 - 15:00 น.</option>
-                            <option value="15:00 - 16:00 น.">15:00 - 16:00 น.</option>
+                        <select id="teacher_time" name="teacher_time">
+                            <option value="">เลือกเวลา</option>
+                            <option value="08:00 - 09:00 น." <?= ($data['teacher_time'] == '08:00 - 09:00 น.') ? 'selected' : ''; ?>>08:00 - 09:00 น.</option>
+                            <option value="09:00 - 10:00 น." <?= ($data['teacher_time'] == '09:00 - 10:00 น.') ? 'selected' : ''; ?>>09:00 - 10:00 น.</option>
+                            <option value="10:00 - 11:00 น." <?= ($data['teacher_time'] == '10:00 - 11:00 น.') ? 'selected' : ''; ?>>10:00 - 11:00 น.</option>
+                            <option value="11:00 - 12:00 น." <?= ($data['teacher_time'] == '11:00 - 12:00 น.') ? 'selected' : ''; ?>>11:00 - 12:00 น.</option>
+                            <option value="12:00 - 13:00 น." <?= ($data['teacher_time'] == '12:00 - 13:00 น.') ? 'selected' : ''; ?>>12:00 - 13:00 น.</option>
+                            <option value="13:00 - 14:00 น." <?= ($data['teacher_time'] == '13:00 - 14:00 น.') ? 'selected' : ''; ?>>13:00 - 14:00 น.</option>
+                            <option value="14:00 - 15:00 น." <?= ($data['teacher_time'] == '14:00 - 15:00 น.') ? 'selected' : ''; ?>>14:00 - 15:00 น.</option>
+                            <option value="15:00 - 16:00 น." <?= ($data['teacher_time'] == '15:00 - 16:00 น.') ? 'selected' : ''; ?>>15:00 - 16:00 น.</option>
                         </select>
                     </div>
 
                     <!-- ปุ่มบันทึกข้อมูล -->
                     <div class="btn-con"> <!-- กลุ่มปุ่มสำหรับบันทึกข้อมูลและออก -->
                         <div class="btn-submit"> <!-- กล่องปุ่มบันทึกข้อมูล -->
-                            <button type="submit" name="add_schedule">บันทึกข้อมูล</button> <!-- ปุ่มสำหรับบันทึกข้อมูล -->
+                            <button type="submit" name="update">บันทึกข้อมูล</button> <!-- ปุ่มสำหรับบันทึกข้อมูล -->
                         </div>
                         <div class="btn-out"> <!-- กล่องปุ่มออก -->
                             <button type="button" onclick="window.location.href='Tutorial-Schedule.php'">ออก</button> <!-- ปุ่มสำหรับออกจากฟอร์มและไปยังหน้า Tutorial-Schedule.php -->
