@@ -102,6 +102,8 @@ if (!isset($_SESSION['admin_login'])) {
             </div>
         </div>
     </div>
-
+    <script src="preview_img.js"></script>
+    <!-- เชื่อมโยงไฟล์ JavaScript สำหรับการพรีวิวภาพ -->
 </body>
+
 </html>
