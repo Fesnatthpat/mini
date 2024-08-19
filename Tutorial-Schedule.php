@@ -95,6 +95,7 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </tr>
                             </thead>
                             <tbody>
+                                <!--การแก้ไขข้อมูลและการลบข้อมูล-->
                                 <?php foreach ($scheduleData as $schedules) { ?>
                                     <tr>
                                         <td><?= htmlspecialchars($schedules['subject_code']); ?></td>
