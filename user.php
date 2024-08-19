@@ -110,10 +110,10 @@ $scheduleData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <div class="btn-con">
+                <!-- <div class="btn-con">
                     <button class="add-student-button" onclick="window.location.href='add-schedule.php'">+ เพิ่มตารางสอน</button>
                     <button class="out-student-button" onclick="window.location.href='home.php'">ออก</button>
-                </div>
+                </div> -->
                 <text class="2">
                     <h2>ตารางสอน ระดับชั้นม.1 ภาคเรียนที่1/2567</h2> <br>
                 </text>

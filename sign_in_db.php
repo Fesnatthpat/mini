@@ -3,7 +3,6 @@
 session_start();
 require_once 'config/db.php';
 // รวมไฟล์ที่มีการตั้งค่าการเชื่อมต่อฐานข้อมูล
-require 'config/db.php';
 
 
 // ตรวจสอบว่าปุ่ม 'signin' ถูกกดในแบบฟอร์มหรือไม่
