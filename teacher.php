@@ -43,6 +43,7 @@ try {
                 <div class="text-1">
                     <h1>ข้อมูลคุณครู</h1>
                 </div>
+                <!--สร้างฟอร์มสำหรับการกรอกข้อมูล เพื่อเพิ่มข้อมูลครู-->
                 <form class="search-form" method="POST" action="search_teacher.php">
                     <div class="form-group">
                         <label for="search_name">ชื่อ-นามสกุล</label>

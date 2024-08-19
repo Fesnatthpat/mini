@@ -69,7 +69,7 @@ try { //try-catch เพื่อจัดการข้อผิดพลา�
                             <option value="">เลือกภาคเรียน</option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
-                        </select>
+                    </select>
                     </div>
 
                     <div class="form-group">

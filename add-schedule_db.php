@@ -12,7 +12,7 @@ if (isset($_POST['add_schedule'])) {
     $teacher_date = $_POST['teacher_date'];
     $teacher_time = $_POST['teacher_time'];
 
-    // ตรวจสอบการกรอกข้อมูล
+    // ตรวจสอบการกรอกข้อมูลว่ามีการกรอกแล้วหรือยัง
     if (empty($semester)) {
         $_SESSION['error'] = 'กรุณากรอกภาคเรียน';
     } elseif (empty($academic_year)) {

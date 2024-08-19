@@ -25,7 +25,7 @@ if (!isset($_SESSION['admin_login'])) {
     <div class="container">
         <h2 class="text-1">ระบบบริหารจัดการข้อมูล</h2>
         <nav class="nav-con">
-            <ul class="menu-con">
+            <ul class="menu-con"> <!--เมนูหัวข้อต่างๆ-->
                 <li><a href="teacher.php">ข้อมูลคุณครู</a></li>
                 <li><a href="data-student.php">ข้อมูลนักเรียน</a></li>
                 <li><a href="data-subject.php">ข้อมูลรายวิชา</a></li>
@@ -40,6 +40,7 @@ if (!isset($_SESSION['admin_login'])) {
             <div class="profile-con1">
                 <div class="profile-con2">
                     <div class="profile-img">
+                        //ตรวจสอบการเป็นแอดมิน
                         <?php
                         if (isset($_SESSION['admin_login'])) {
                             $admin_login = $_SESSION['admin_login'];

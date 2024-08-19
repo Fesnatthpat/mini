@@ -1,4 +1,4 @@
-<?php
+<?php //เริ่มต้นการเชื่อมข้อมูล
 session_start();
 require_once 'config/db.php';
 ?>
@@ -22,6 +22,7 @@ require_once 'config/db.php';
                 <div class="items-1"></div>
                 <form action="sign_in_db.php" method="POST">
                     <div class="input-con">
+                        <!-- แสดงข้อความความผิดพลาดจากเซสชันในหน้าเพจ หลังจากแสดงแล้วจะลบออก -->
                         <?php if (isset($_SESSION['error'])) { ?>
                             <div class="alert-danger" role="alert">
                                 <?php
@@ -30,6 +31,7 @@ require_once 'config/db.php';
                                 ?>
                             </div>
                         <?php } ?>
+                        <!-- แสดงข้อความความสำเร็จจากเซสชันในหน้าเพจ หลังจากแสดงแล้วจะลบออก -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert-success" role="alert">
                                 <?php
@@ -38,7 +40,8 @@ require_once 'config/db.php';
                                 ?>
                             </div>
                         <?php } ?>
-                        <h1 class="text-login">Log In</h1>
+                        <!-- ล็อกอินการเข้าใช้งาน -->
+                        <h1 class="text-login">Log In</h1> 
                         <div class="input-1">
                             <input type="text" name="username" placeholder="Username" />
                         </div>
