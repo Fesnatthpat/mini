@@ -127,18 +127,28 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับวัน -->
                         <label for="teacher_date">วัน</label> <!-- ป้ายชื่อสำหรับเมนูเลือกวัน -->
-                        <select id="level" name="teacher_date"> <!-- เมนูเลือกวัน -->
+                        <select  name="teacher_date"> <!-- เมนูเลือกวัน -->
                             <option value="">เลือกวัน</option> <!-- ตัวเลือกเริ่มต้น -->
-                            <option value="วันจันทร์">วันจันทร์</option> <!-- ตัวเลือกวันจันทร์ -->
-                            <option value="วันอังคาร">วันอังคาร</option> <!-- ตัวเลือกวันอังคาร -->
-                            <option value="วันพุธ">วันพุธ</option> <!-- ตัวเลือกวันพุธ -->
-                            <option value="วันพฤหัสบดี">วันพฤหัสบดี</option> <!-- ตัวเลือกวันพฤหัสบดี -->
-                            <option value="วันศุกร์">วันศุกร์</option> <!-- ตัวเลือกวันศุกร์ -->
+                            <option value="จ.">วันจันทร์</option> <!-- ตัวเลือกวันจันทร์ -->
+                            <option value="อ.">วันอังคาร</option> <!-- ตัวเลือกวันอังคาร -->
+                            <option value="พุธ.">วันพุธ</option> <!-- ตัวเลือกวันพุธ -->
+                            <option value="พฤ.">วันพฤหัสบดี</option> <!-- ตัวเลือกวันพฤหัสบดี -->
+                            <option value="ศ.">วันศุกร์</option> <!-- ตัวเลือกวันศุกร์ -->
                         </select>
                     </div>
-                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับเวลา -->
-                        <label for="teacher_time">เวลา</label> <!-- ป้ายชื่อสำหรับช่องกรอกเวลา -->
-                        <input type="text" id="search-name" name="teacher_time"> <!-- ช่องกรอกข้อมูลเวลา -->
+                    <div class="form-group">
+                        <label for="teacher_time">เวลา</label>
+                        <select type="time" name="teacher_time"> <!-- input สำหรับเลือกเวลา -->
+                            <option value="">เลือกเวลา</option>
+                            <option value="08:00 - 09:00 น.">08:00 - 09:00 น.</option>
+                            <option value="09:00 - 10:00 น.">09:00 - 10:00 น.</option>
+                            <option value="10:00 - 11:00 น.">10:00 - 11:00 น.</option>
+                            <option value="11:00 - 12:00 น.">11:00 - 12:00 น.</option>
+                            <option value="12:00 - 13:00 น.">12:00 - 13:00 น.</option>
+                            <option value="13:00 - 14:00 น.">13:00 - 14:00 น.</option>
+                            <option value="14:00 - 15:00 น.">14:00 - 15:00 น.</option>
+                            <option value="15:00 - 16:00 น.">15:00 - 16:00 น.</option>
+                        </select>
                     </div>
                     <div class="btn-con"> <!-- กลุ่มปุ่มสำหรับบันทึกข้อมูลและออก -->
                         <div class="btn-submit"> <!-- กล่องปุ่มบันทึกข้อมูล -->
@@ -148,7 +158,7 @@ $roomData = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <button type="button" onclick="window.location.href='Tutorial-Schedule.php'">ออก</button> <!-- ปุ่มสำหรับออกจากฟอร์มและไปยังหน้า Tutorial-Schedule.php -->
                         </div>
                     </div>
-                    </fด>
+                </form>
             </div>
         </div>
     </div>
