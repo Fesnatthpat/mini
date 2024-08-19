@@ -78,7 +78,7 @@ if (isset($_GET['subject_id'])) {
                             <button type="submit" name="update">บันทึกข้อมูล</button>
                         </div>
                         <div class="btn-out">
-                            <button type="button" onclick="history.back()">ออก</button>
+                            <button type="button" onclick="window.location.href='data-subject.php'">ออก</button>
                         </div>
                     </div>
                 </form>

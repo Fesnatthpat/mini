@@ -15,7 +15,7 @@ $sql = "SELECT s.schedule_id, sj.subject_name, sj.subject_code, sj.subject_id, t
         JOIN teacher AS t ON s.t_id = t.t_id
         JOIN subject AS sj ON s.subject_id = sj.subject_id
         JOIN room AS r ON s.room_id = r.room_id
-        GROUP BY s.schedule_id, sj.subject_name, sj.subject_id, t.t_id, t.fullname, r.room_id, r.room_no";
+        -- GROUP BY s.schedule_id, sj.subject_name, sj.subject_id, t.t_id, t.fullname, r.room_id, r.room_no";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
