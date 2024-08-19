@@ -66,13 +66,12 @@ if (isset($_GET['room_id'])) {
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับเลือกชั้น -->
                         <label for="floot">ชั้น</label> <!-- ป้ายชื่อสำหรับช่องชั้น -->
-                        <select name="floot"> <!-- เมนูดรอปดาวน์สำหรับเลือกชั้น -->
-                            <option><?= isset($data['floot']) ? htmlspecialchars($data['floot']) : ''; ?></option> <!-- ตัวเลือกที่เลือกในตอนนี้ -->
-                            <?php foreach ($dataroom as $floot) { ?>
-                                <option value="<?= htmlspecialchars($floot['floot']); ?>">
-                                    <?= htmlspecialchars($floot['floot']); ?>
-                                </option>
-                            <?php } ?>
+                        <select id="floot" name="floot"> <!-- เมนูดรอปดาวน์สำหรับเลือกชั้น -->
+                            <option><?= htmlspecialchars($data['floot']); ?></option>
+                            <option value="">เลือกชั้น</option> <!-- ตัวเลือกเริ่มต้น -->
+                            <option value="1">1</option> <!-- ตัวเลือกชั้น 1 -->
+                            <option value="2">2</option> <!-- ตัวเลือกชั้น 2 -->
+                            <option value="3">3</option> <!-- ตัวเลือกชั้น 3 -->
                         </select>
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับอัปโหลดรูปภาพ -->

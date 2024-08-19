@@ -82,6 +82,7 @@ if (isset($_GET['subject_id'])) {
                         <label for="level">ระดับชั้น</label>
                         <!-- ป้ายชื่อสำหรับฟิลด์ระดับชั้น -->
                         <select id="level" name="level">
+                        <option><?= htmlspecialchars($data['level']); ?></option>
                             <!-- เมนูแบบเลือกสำหรับเลือกระดับชั้น -->
                             <option value="">เลือกระดับชั้น</option>
                             <!-- ตัวเลือกเริ่มต้นให้เลือกว่าจะเลือกระดับชั้น -->

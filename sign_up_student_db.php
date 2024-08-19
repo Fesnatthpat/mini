@@ -91,7 +91,7 @@ if (isset($_POST['signupstudent'])) {
                             $stmt->bindParam(":urole", $urole); // ผูกค่าบทบาท
                             $stmt->execute(); // รันคำสั่ง SQL
                             $_SESSION['success'] = 'สมัครเรียบร้อยแล้ว'; // เก็บข้อความสำเร็จในเซสชัน
-                            header("location: add-student.php"); // เปลี่ยนเส้นทางกลับไปยังหน้าเพิ่มนักเรียน
+                            header("location: data-student.php"); // เปลี่ยนเส้นทางกลับไปยังหน้าเพิ่มนักเรียน
                             exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
                         } else {
                             $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว'; // เก็บข้อความแสดงข้อผิดพลาดในเซสชัน

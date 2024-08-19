@@ -53,7 +53,7 @@ if (isset($_POST['add_classroom'])) { // ตรวจสอบว่ามีก
                             $stmt->bindParam(":photo", $fileNew); // ผูกชื่อไฟล์รูปภาพใหม่กับพารามิเตอร์ในคำสั่ง SQL
                             $stmt->execute(); // ดำเนินการคำสั่ง SQL เพื่อเพิ่มข้อมูลในฐานข้อมูล
                             $_SESSION['success'] = 'เพิ่มวิชาเรียบร้อยแล้ว'; // แสดงข้อความสำเร็จผ่านเซสชัน
-                            header("location: add-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
+                            header("location: data-classroom.php"); // เปลี่ยนเส้นทางกลับไปยังหน้า add-classroom.php
                             exit(); // หยุดการทำงานของสคริปต์เพื่อไม่ให้ดำเนินการต่อไป
                         } else { // หากการย้ายไฟล์รูปภาพล้มเหลว
                             $_SESSION['error'] = 'การอัพโหลดรูปภาพล้มเหลว'; // แสดงข้อความข้อผิดพลาดผ่านเซสชัน

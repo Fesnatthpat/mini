@@ -85,9 +85,10 @@ if (!isset($_SESSION['admin_login'])) {
                             <option value="3">3</option> <!-- ตัวเลือกชั้น 3 -->
                         </select>
                     </div>
-                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับการอัปโหลดรูปห้องเรียน -->
-                        <label for="photo">รูปห้องเรียน</label> <!-- ป้ายสำหรับรูปห้องเรียน -->
-                        <input type="file" id="photo" name="photo"> <!-- ช่องอัปโหลดไฟล์รูปภาพ -->
+                    <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับรูปถ่าย -->
+                        <label for="photo">รูปห้องเรียน</label> <!-- ป้ายชื่อสำหรับรูปถ่าย -->
+                        <input type="file" id="imgInput" name="photo"> <!-- ฟิลด์อัพโหลดไฟล์สำหรับรูปถ่าย -->
+                        <img id="previewImg"> <!-- แสดงภาพพรีวิวรูปถ่าย -->
                     </div>
                     <div class="btn-con"> <!-- กลุ่มปุ่ม -->
                         <div class="btn-submit"> <!-- กล่องปุ่มบันทึก -->

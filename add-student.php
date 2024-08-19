@@ -76,8 +76,8 @@ if (!isset($_SESSION['admin_login'])) {
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับรูปถ่าย -->
                         <label for="photo">รูปถ่าย</label> <!-- ป้ายชื่อสำหรับรูปถ่าย -->
-                        <p>image/gif, image/jpeg, image/png</p> <!-- ข้อความบอกประเภทไฟล์ที่สามารถอัปโหลด -->
-                        <input type="file" id="photo" name="photo" accept="image/gif, image/jpeg, image/png"> <!-- ช่องอัปโหลดไฟล์ที่ยอมรับเฉพาะประเภทภาพที่กำหนด -->
+                        <input type="file" id="imgInput" name="photo"> <!-- ฟิลด์อัพโหลดไฟล์สำหรับรูปถ่าย -->
+                        <img id="previewImg"> <!-- แสดงภาพพรีวิวรูปถ่าย -->
                     </div>
                     <div class="form-group"> <!-- กลุ่มฟอร์มสำหรับ Username -->
                         <label for="username">Username</label> <!-- ป้ายชื่อสำหรับ Username -->
@@ -99,7 +99,7 @@ if (!isset($_SESSION['admin_login'])) {
             </div>
         </div>
     </div>
-
+    <script src="preview_img.js"></script>
 </body>
 
 </html>
