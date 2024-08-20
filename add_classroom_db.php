@@ -72,7 +72,7 @@ if (isset($_POST['add_classroom'])) { // ตรวจสอบว่ามีก
                 }
             }
         } catch (PDOException $e) { // จับข้อผิดพลาดหากมีการเกิดขึ้น
-            echo $e->getMessage(); // แสดงข้อความข้อผิดพลาด
+            echo "Error" . $e->getMessage(); // แสดงข้อความข้อผิดพลาด
         }
     }
 }
