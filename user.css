@@ -1,14 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-/* นำเข้าฟอนต์ Kanit และ Roboto Condensed จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap'); 
+/* นำเข้าไฟล์ฟอนต์จาก Google Fonts ที่ชื่อว่า Kanit และ Roboto Condensed เพื่อใช้ในหน้าเว็บ */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    /* ตั้งค่าฟอนต์พื้นฐานสำหรับทุกองค์ประกอบ */
+    margin: 0; 
+    /* ลบระยะห่างรอบนอก (margin) ของทุกองค์ประกอบ */
+    padding: 0; 
+    /* ลบระยะห่างภายใน (padding) ของทุกองค์ประกอบ */
+    box-sizing: border-box; 
+    /* กำหนดให้การคำนวณความกว้างและความสูงรวมถึง border และ padding ด้วย */
+    font-family: "Kanit", sans-serif; 
+    /* กำหนดฟอนต์ของทุกองค์ประกอบเป็นฟอนต์ Kanit */
+    font-weight: 300; 
+    /* กำหนดน้ำหนักฟอนต์ให้บาง (weight 300) */
+    font-style: normal; 
+    /* กำหนดรูปแบบฟอนต์เป็นปกติ (ไม่เอียง) */
+    font-family: "Kanit", sans-serif; 
+    font-weight: 400; 
+    /* กำหนดน้ำหนักฟอนต์เป็นมาตรฐาน (weight 400) */
+    font-style: normal; 
+    font-family: "Kanit", sans-serif; 
+    font-weight: 500; 
+    /* กำหนดน้ำหนักฟอนต์ให้หนาขึ้นเล็กน้อย (weight 500) */
+    font-style: normal; 
 }
 
 /* กำหนดความสูงของ HTML ให้เต็มหน้าจอ */
